@@ -1,0 +1,92 @@
+---
+description: Content editing guide for designers
+globs: ["mocks/**/*.tsx", "constants/**/*.tsx"]
+alwaysApply: false
+---
+
+# Content Editing Guide
+
+## Where to Edit Content
+
+All text content is centralized in the `mocks/` folder for easy editing:
+
+```
+mocks/
+├── benefits.tsx       # Product benefits section
+├── collaboration.tsx  # Integration logos and text
+├── community.tsx      # Community/testimonials
+├── comparison.tsx     # Feature comparison table
+├── faq.tsx            # Frequently asked questions
+├── features.tsx       # Features list
+├── how-it-works.tsx   # Step-by-step guide
+├── how-to-use.tsx     # Usage instructions
+├── pricing.tsx        # Pricing plans
+├── roadmap.tsx        # Product roadmap
+└── testimonials.tsx   # Customer testimonials
+```
+
+## Navigation & Links
+
+Edit navigation in `constants/`:
+
+```
+constants/
+├── navigation.tsx     # Header/footer navigation links
+└── socials.tsx        # Social media links
+```
+
+## Content Structure
+
+### Typical Mock File
+
+```tsx
+// mocks/features.tsx
+export const features = [
+  {
+    id: "1",
+    title: "Feature Title",
+    description: "Feature description text...",
+    icon: "/images/icons/feature-icon.svg",
+  },
+  // Add more items...
+];
+```
+
+### Editing Tips
+
+1. **Keep strings concise** - Landing pages need scannable content
+2. **Use consistent tone** - Professional but approachable
+3. **Update all languages** - If i18n is added later
+4. **Test line breaks** - Check how text wraps on mobile
+
+## Images
+
+### Location
+All images are in `public/images/`:
+- `benefits/` - Benefit cards and icons
+- `features/` - Feature screenshots
+- `hero/` - Hero section images
+- `icons/` - UI icons
+
+### Guidelines
+- Use SVG for icons when possible
+- Optimize images before adding
+- Use descriptive filenames
+- Recommended sizes:
+  - Icons: 24x24 or 48x48
+  - Cards: 400x300
+  - Hero: 1200x800
+
+## Brand Voice
+
+### Do
+- Be clear and direct
+- Focus on developer benefits
+- Use technical terms appropriately
+- Highlight type safety and flexibility
+
+### Don't
+- Use marketing fluff
+- Over-promise features
+- Use jargon without context
+- Write walls of text

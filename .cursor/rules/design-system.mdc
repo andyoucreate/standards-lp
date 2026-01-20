@@ -1,0 +1,61 @@
+---
+description: Standards design system tokens and guidelines
+globs: ["**/*.tsx", "**/*.css"]
+alwaysApply: false
+---
+
+# Standards Design System
+
+## Color Palette
+
+### Primary Colors (Blue)
+- `primary-500`: Main actions, CTAs, links (#558BF4)
+- Use `bg-primary-500`, `text-primary-500`, `border-primary-500`
+
+### Secondary Colors (Dark Blue)
+- `secondary-500`: Navigation, headers (#003155)
+- Use for dark backgrounds and secondary actions
+
+### Semantic Colors
+- `destructive`: Error states, delete actions (#E7000B)
+- `success`: Success states, confirmations (#08826F)
+- `warning`: Warning states, cautions (#E77700)
+- `info`: Information, tips (#155DFC)
+
+### Neutral Colors (Legacy from template)
+- `n-1` to `n-8`: Grayscale from white to dark
+- `n-8`: Main dark background
+- `n-1`: Main light text
+
+## Typography
+
+### Font Family
+- **Manrope** is the primary font
+- Available weights: 200-800
+- Use `font-sans` class (configured in globals.css)
+
+### Heading Classes
+- `.h1`: Hero headings (responsive: 2.5rem → 3.75rem)
+- `.h2`: Section headings (responsive: 1.75rem → 3rem)
+- `.h3`: Subsection headings
+- `.h4`, `.h5`, `.h6`: Smaller headings
+
+### Body Classes
+- `.body-1`: Large body text (responsive)
+- `.body-2`: Regular body text
+- `.caption`: Small text
+- `.tagline`: Uppercase tracking labels
+
+## Spacing
+- Use Tailwind spacing utilities
+- Custom: `px-15` (3.75rem), `px-7.5` (1.875rem)
+
+## Dark Mode
+- Dark mode is enabled via `next-themes`
+- Uses `class` strategy on `<html>`
+- CSS variables automatically switch in `.dark` class
+
+## Animations
+- Default transition: 200ms linear
+- Use `transition-colors` for hover states
+- Accordion animations available via `animate-accordion-down/up`

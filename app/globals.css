@@ -1,0 +1,227 @@
+@import "tailwindcss";
+
+/* ============================================
+   Standards Design System
+   ============================================ */
+
+@theme {
+  /* Typography */
+  --font-sans: "Manrope", system-ui, sans-serif;
+
+  /* Primary Colors */
+  --color-primary-50: oklch(0.97 0.02 230);
+  --color-primary-100: oklch(0.94 0.04 230);
+  --color-primary-200: oklch(0.88 0.08 230);
+  --color-primary-300: oklch(0.80 0.12 230);
+  --color-primary-400: oklch(0.72 0.15 230);
+  --color-primary-500: oklch(0.65 0.15 230); /* #558BF4 */
+  --color-primary-600: oklch(0.55 0.15 230);
+  --color-primary-700: oklch(0.45 0.15 230);
+  --color-primary-800: oklch(0.35 0.12 230);
+  --color-primary-900: oklch(0.25 0.08 230);
+
+  /* Secondary Colors */
+  --color-secondary-50: oklch(0.97 0.01 220);
+  --color-secondary-100: oklch(0.90 0.03 220);
+  --color-secondary-200: oklch(0.75 0.05 220);
+  --color-secondary-300: oklch(0.60 0.07 220);
+  --color-secondary-400: oklch(0.45 0.08 220);
+  --color-secondary-500: oklch(0.25 0.08 220); /* #003155 */
+  --color-secondary-600: oklch(0.20 0.07 220);
+  --color-secondary-700: oklch(0.15 0.05 220);
+  --color-secondary-800: oklch(0.12 0.04 220);
+  --color-secondary-900: oklch(0.08 0.02 220);
+
+  /* Semantic Colors */
+  --color-destructive: oklch(0.55 0.25 25); /* #E7000B */
+  --color-success: oklch(0.50 0.15 168); /* #08826F */
+  --color-warning: oklch(0.65 0.20 55); /* #E77700 */
+  --color-info: oklch(0.55 0.22 250); /* #155DFC */
+
+  /* Neutral Colors - Light Mode */
+  --color-background: oklch(1 0 0); /* #FFFFFF */
+  --color-foreground: oklch(0.15 0 0); /* #1C1C1C */
+  --color-muted: oklch(0.97 0 0); /* #F5F5F5 */
+  --color-muted-foreground: oklch(0.55 0 0);
+  --color-border: oklch(0.90 0 0); /* #E5E5E5 */
+  --color-input: oklch(0.94 0 0); /* #EFEFEF */
+  --color-ring: oklch(0.65 0.15 230);
+
+  /* Legacy Brainwave Colors (for compatibility) */
+  --color-n-1: oklch(1 0 0); /* #FFFFFF */
+  --color-n-2: oklch(0.85 0.02 280); /* #CAC6DD */
+  --color-n-3: oklch(0.75 0.02 280); /* #ADA8C3 */
+  --color-n-4: oklch(0.55 0.02 280); /* #757185 */
+  --color-n-5: oklch(0.35 0.02 280); /* #3F3A52 */
+  --color-n-6: oklch(0.22 0.02 280); /* #252134 */
+  --color-n-7: oklch(0.15 0.02 280); /* #15131D */
+  --color-n-8: oklch(0.10 0.02 280); /* #0E0C15 */
+
+  --color-stroke-1: oklch(0.20 0.01 280); /* #26242C */
+
+  /* Accent Colors */
+  --color-color-1: oklch(0.70 0.20 300); /* #AC6AFF */
+  --color-color-2: oklch(0.85 0.12 70); /* #FFC876 */
+  --color-color-3: oklch(0.70 0.18 25); /* #FF776F */
+  --color-color-4: oklch(0.75 0.18 140); /* #7ADB78 */
+  --color-color-5: oklch(0.65 0.15 270); /* #858DFF */
+  --color-color-6: oklch(0.75 0.15 340); /* #FF98E2 */
+
+  /* Spacing */
+  --spacing-0-25: 0.0625rem;
+  --spacing-7-5: 1.875rem;
+  --spacing-15: 3.75rem;
+
+  /* Animation */
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+}
+
+/* ============================================
+   Dark Mode Overrides
+   ============================================ */
+
+.dark {
+  --color-background: oklch(0.15 0 0); /* #1C1C1C */
+  --color-foreground: oklch(0.98 0 0); /* #FAFAFA */
+  --color-muted: oklch(0.22 0 0); /* #2E2E2E */
+  --color-muted-foreground: oklch(0.65 0 0);
+  --color-border: oklch(0.25 0 0); /* #333333 */
+  --color-input: oklch(0.25 0 0); /* #333333 */
+}
+
+/* ============================================
+   Base Styles
+   ============================================ */
+
+@layer base {
+  body {
+    @apply bg-n-8 text-n-1 antialiased;
+  }
+}
+
+/* ============================================
+   Typography Components
+   ============================================ */
+
+@layer components {
+  .h1 {
+    @apply font-semibold text-[2.5rem] leading-[3.25rem] md:text-[2.75rem] md:leading-[3.75rem] lg:text-[3.25rem] lg:leading-[4.0625rem] xl:text-[3.75rem] xl:leading-[4.5rem];
+  }
+
+  .h2 {
+    @apply text-[1.75rem] leading-[2.5rem] md:text-[2rem] md:leading-[2.5rem] lg:text-[2.5rem] lg:leading-[3.5rem] xl:text-[3rem] xl:leading-tight;
+  }
+
+  .h3 {
+    @apply text-[2rem] leading-normal md:text-[2.5rem];
+  }
+
+  .h4 {
+    @apply text-[2rem] leading-normal;
+  }
+
+  .h5 {
+    @apply text-2xl leading-normal;
+  }
+
+  .h6 {
+    @apply font-semibold text-lg leading-8;
+  }
+
+  .body-1 {
+    @apply text-[0.875rem] leading-[1.5rem] md:text-[1rem] md:leading-[1.75rem] lg:text-[1.25rem] lg:leading-8;
+  }
+
+  .body-2 {
+    @apply font-light text-[0.875rem] leading-6 md:text-base;
+  }
+
+  .caption {
+    @apply text-sm;
+  }
+
+  .tagline {
+    @apply font-light text-xs tracking-[0.15em] uppercase;
+  }
+
+  .quote {
+    @apply text-lg leading-normal;
+  }
+
+  .button {
+    @apply text-xs font-bold uppercase tracking-wider;
+  }
+}
+
+/* ============================================
+   Layout Components
+   ============================================ */
+
+@layer components {
+  .container {
+    @apply max-w-[77.5rem] mx-auto px-5 md:px-10 lg:px-15 xl:max-w-[87.5rem];
+  }
+}
+
+/* ============================================
+   Utilities
+   ============================================ */
+
+@layer utilities {
+  .tap-highlight-color {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+}
+
+/* ============================================
+   Splide Carousel Styles
+   ============================================ */
+
+@layer components {
+  .splide-custom .splide__arrow {
+    @apply relative top-0 left-0 right-0 flex items-center justify-center w-12 h-12 bg-transparent border border-solid border-n-4/50 rounded-full transform-none transition-colors hover:border-n-3;
+  }
+
+  .splide-custom .splide__arrow:hover svg {
+    @apply fill-n-1;
+  }
+
+  .splide-custom .splide__arrow svg {
+    @apply w-4 h-4 fill-n-4 transform-none transition-colors;
+  }
+
+  .splide-visible .splide__track {
+    @apply overflow-visible;
+  }
+
+  .splide-pricing .splide__list {
+    @apply lg:grid lg:grid-cols-3 lg:gap-4;
+  }
+
+  .splide-benefits .splide__list {
+    @apply md:grid md:grid-cols-3 md:gap-x-10 md:gap-y-[4.5rem] xl:gap-y-[6rem];
+  }
+}
+
+/* ============================================
+   Keyframes
+   ============================================ */
+
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}

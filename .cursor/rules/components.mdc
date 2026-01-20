@@ -1,0 +1,85 @@
+---
+description: Component conventions for the Standards landing page
+globs: ["components/**/*.tsx", "templates/**/*.tsx"]
+alwaysApply: false
+---
+
+# Component Guidelines
+
+## File Structure
+
+```
+components/
+├── ComponentName/
+│   └── index.tsx      # Main component export
+templates/
+├── PageTemplate/
+│   ├── index.tsx      # Page composition
+│   └── Section/
+│       └── index.tsx  # Page section
+```
+
+## Component Conventions
+
+### Naming
+- PascalCase for component names
+- Folder name matches component name
+- Export from `index.tsx`
+
+### Props
+- Use TypeScript interfaces
+- Destructure props in function signature
+- Use `className` for style overrides
+
+### Example Component
+
+```tsx
+interface CardProps {
+  title: string;
+  description?: string;
+  className?: string;
+  children?: React.ReactNode;
+}
+
+export function Card({ title, description, className, children }: CardProps) {
+  return (
+    <div className={cn("rounded-lg border border-n-5 p-6", className)}>
+      <h3 className="h5 mb-2">{title}</h3>
+      {description && <p className="body-2 text-n-3">{description}</p>}
+      {children}
+    </div>
+  );
+}
+```
+
+## Styling Guidelines
+
+### Use Tailwind Classes
+- Prefer Tailwind utilities over custom CSS
+- Use design system classes: `.h1`, `.body-1`, etc.
+- Compose with `classnames` or `cn` utility
+
+### Responsive Design
+- Mobile-first approach
+- Breakpoints: `md:`, `lg:`, `xl:`
+- Test on all breakpoints
+
+### Accessibility
+- Use semantic HTML elements
+- Add `aria-*` attributes when needed
+- Ensure keyboard navigation works
+- Maintain color contrast ratios
+
+## Import Patterns
+
+```tsx
+// External dependencies
+import { useState } from "react";
+import classnames from "classnames";
+
+// Internal components
+import { Button } from "@/components/Button";
+
+// Types
+import type { SectionProps } from "./types";
+```

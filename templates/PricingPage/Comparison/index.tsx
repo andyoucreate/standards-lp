@@ -1,11 +1,13 @@
-import Tippy from "@tippyjs/react";
+"use client";
+
 import Heading from "@/components/Heading";
 import Image from "@/components/Image";
 import Section from "@/components/Section";
+import Tooltip from "@/components/Tooltip";
 
 import { comparison } from "@/mocks/comparison";
 
-type ComparisonProps = {};
+type ComparisonProps = object;
 
 const Comparison = ({}: ComparisonProps) => {
     const check = (value: any, enterprise?: boolean) =>
@@ -53,21 +55,19 @@ const Comparison = ({}: ComparisonProps) => {
                                     <td className="w-[35%] h-[4.75rem] py-2.5 pr-2.5 border-t border-n-1/5">
                                         <div className="flex items-center">
                                             {item.title}
-                                            <Tippy
-                                                className="p-2.5 bg-n-1 text-n-8 rounded-xl"
+                                            <Tooltip
+                                                className="flex-shrink-0 ml-3 opacity-30 transition-opacity hover:opacity-100"
                                                 content="Provide dedicated servers for enterprises to ensure maximum security, performance, and uptime."
                                                 placement="right"
                                                 animation="shift-toward"
                                             >
-                                                <div className="flex-shrink-0 ml-3 opacity-30 transition-opacity hover:opacity-100">
-                                                    <Image
-                                                        src="/images/icons/help-circle.svg"
-                                                        width={24}
-                                                        height={24}
-                                                        alt="Help"
-                                                    />
-                                                </div>
-                                            </Tippy>
+                                                <Image
+                                                    src="/images/icons/help-circle.svg"
+                                                    width={24}
+                                                    height={24}
+                                                    alt="Help"
+                                                />
+                                            </Tooltip>
                                         </div>
                                     </td>
                                     <td className="h-[4.75rem] p-2.5 border-t border-n-1/5 text-center">

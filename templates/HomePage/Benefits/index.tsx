@@ -20,14 +20,14 @@ const Benefits = ({}: BenefitsProps) => {
     };
 
     return (
-        <Section className="overflow-hidden">
-            <div className="container relative z-2">
+        <Section>
+            <div className="container relative z-2" style={{ overflow: 'visible' }}>
                 <Heading
                     className="md:max-w-md lg:max-w-2xl"
-                    title="Chat Smarter, Not Harder with Brainwave"
+                    title="Find Marketing Inspiration Instantly with Emailoverflow"
                 />
                 <Splide
-                    className="splide-visible max-w-[24rem] md:max-w-none"
+                    className="splide-visible max-w-[24rem] md:max-w-none overflow-visible"
                     options={{
                         mediaQuery: "min",
                         pagination: false,
@@ -43,15 +43,12 @@ const Benefits = ({}: BenefitsProps) => {
                     hasTrack={false}
                     ref={ref}
                 >
-                    <SplideTrack>
+                    <SplideTrack style={{ overflow: 'visible' }}>
                         {benefits.map((item) => (
                             <SplideSlide key={item.id}>
                                 <Link
-                                    className="block relative p-0.5 bg-no-repeat bg-[length:100%_100%] md:max-w-[24rem]"
+                                    className="block relative p-0.5 md:max-w-[24rem] border border-n-6 rounded-[2rem] group"
                                     href="/features"
-                                    style={{
-                                        backgroundImage: `url(${item.backgroundUrl})`,
-                                    }}
                                 >
                                     <div className="relative z-2 flex flex-col h-[22.625rem] p-[2.375rem] pointer-events-none">
                                         <h5 className="h5 mb-5">
@@ -67,11 +64,11 @@ const Benefits = ({}: BenefitsProps) => {
                                                 height={48}
                                                 alt={item.title}
                                             />
-                                            <div className="ml-auto font-code text-xs font-bold text-n-1 uppercase tracking-wider">
+                                            <div className="ml-auto font-code text-xs font-bold text-n-1 uppercase tracking-wider group-hover:text-color-1 transition-colors">
                                                 Explore more
                                             </div>
                                             <svg
-                                                className="ml-5 fill-n-1"
+                                                className="ml-5 fill-n-1 group-hover:fill-color-1 transition-colors"
                                                 width="24"
                                                 height="24"
                                             >
@@ -79,26 +76,12 @@ const Benefits = ({}: BenefitsProps) => {
                                             </svg>
                                         </div>
                                     </div>
-                                    {item.light && (
-                                        <div className="absolute top-0 left-1/4 w-full aspect-square bg-radial-gradient from-[#28206C] to-[#28206C]/0 to-70% pointer-events-none"></div>
-                                    )}
                                     <div
                                         className="absolute inset-0.5 bg-n-8"
                                         style={{
                                             clipPath: "url(#benefits)",
                                         }}
                                     >
-                                        <div className="absolute inset-0 opacity-0 transition-opacity hover:opacity-10">
-                                            {item.imageUrl && (
-                                                <Image
-                                                    className="w-full h-full object-cover"
-                                                    src={item.imageUrl}
-                                                    width={380}
-                                                    height={362}
-                                                    alt={item.title}
-                                                />
-                                            )}
-                                        </div>
                                     </div>
                                 </Link>
                             </SplideSlide>

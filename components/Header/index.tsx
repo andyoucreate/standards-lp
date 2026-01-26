@@ -10,16 +10,16 @@ import Image from "../Image";
 
 import { navigation } from "@/constants/navigation";
 
-function NewAccountLink() {
+function LoginLink() {
   const searchParams = useSearchParams();
   return (
     <Link
-      className={`button hidden mr-8 text-n-1/50 transition-colors hover:text-n-1 lg:block ${
-        searchParams.has("new") ? "lg:text-n-1" : ""
+      className={`button hidden mr-8 text-n-1/50 transition-colors hover:text-n-1 lg:block whitespace-nowrap ${
+        !searchParams.has("new") ? "lg:text-n-1" : ""
       }`}
-      href="/login?new=true"
+      href="/login"
     >
-      New account
+      Login
     </Link>
   );
 }
@@ -53,18 +53,18 @@ const Header = ({}: HeaderProps) => {
 
     return (
         <div
-            className={`fixed top-0 left-0 z-50 w-full ${
-                openNavigation ? "bg-n-8" : " bg-n-8/90 backdrop-blur-sm"
-            } border-b border-n-6 lg:bg-n-8/90 lg:backdrop-blur-sm`}
+            className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 ${
+                openNavigation ? "bg-n-8" : "bg-n-8/80 backdrop-blur-md"
+            } border border-n-6 rounded-2xl lg:bg-n-8/80 lg:backdrop-blur-md`}
         >
-            <div className="flex items-center h-[4.75rem] px-5 lg:h-[5.25rem] lg:px-7.5 xl:px-10">
+            <div className="flex items-center h-[4.75rem] px-4 lg:h-[5.25rem] lg:px-6 xl:px-8">
                 <Logo className="xl:mr-8" />
                 <nav
                     className={`${
                         openNavigation ? "flex" : "hidden"
-                    } fixed top-[4.8125rem] left-0 right-0 bottom-0 bg-n-8 lg:static lg:flex lg:mx-auto lg:bg-transparent`}
+                    } fixed top-[6.25rem] left-6 right-6 bottom-6 bg-n-8/95 backdrop-blur-md rounded-2xl lg:static lg:flex lg:mx-auto lg:bg-transparent lg:backdrop-blur-none lg:rounded-none`}
                 >
-                    <div className="relative z-2 flex flex-col items-center justify-center m-auto lg:flex-row">
+                    <div className="relative z-2 flex flex-col items-center justify-center m-auto lg:flex-row lg:whitespace-nowrap">
                         {navigation.map((item) => (
                             <Link
                                 className={`block relative font-code text-2xl uppercase text-n-1 transition-colors hover:text-color-1 ${
@@ -73,7 +73,7 @@ const Header = ({}: HeaderProps) => {
                                     item.url === pathname
                                         ? "z-2 lg:text-n-1"
                                         : "lg:text-n-1/50"
-                                } lg:leading-5 lg:hover:text-n-1 xl:px-12`}
+                                } lg:leading-5 lg:hover:text-n-1 lg:px-4 xl:px-5 whitespace-nowrap`}
                                 href={item.url}
                                 onClick={() =>
                                     item.url.startsWith(pathname) &&
@@ -99,39 +99,19 @@ const Header = ({}: HeaderProps) => {
                             </Link>
                         ))}
                     </div>
-                    <div className="absolute inset-0 pointer-events-none lg:hidden">
-                        <div className="absolute inset-0 opacity-[.03]">
-                            <Image
-                                className="w-full h-full object-cover"
-                                src="/images/header/background.jpg"
-                                width={688}
-                                height={953}
-                                alt="Background"
-                            />
-                        </div>
-                        <div className="absolute top-1/2 left-1/2 w-[51.375rem] aspect-square border border-n-2/10 rounded-full -translate-x-1/2 -translate-y-1/2">
-                            <div className="absolute top-1/2 left-1/2 w-[36.125rem] aspect-square border border-n-2/10 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-                            <div className="absolute top-1/2 left-1/2 w-[23.125rem] aspect-square border border-n-2/10 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-                        </div>
-                        <div className="absolute top-0 left-5 w-0.25 h-full bg-n-6"></div>
-                        <div className="absolute top-0 right-5 w-0.25 h-full bg-n-6"></div>
-                        <div className="absolute top-[4.4rem] left-16 w-3 h-3 bg-gradient-to-b from-[#DD734F] to-[#1A1A32] rounded-full"></div>
-                        <div className="absolute top-[12.6rem] right-16 w-3 h-3 bg-gradient-to-b from-[#B9AEDF] to-[#1A1A32] rounded-full"></div>
-                        <div className="absolute top-[26.8rem] left-12 w-6 h-6 bg-gradient-to-b from-[#88E5BE] to-[#1A1A32] rounded-full"></div>
-                    </div>
                 </nav>
                 <Suspense fallback={
                     <Link
-                        className="button hidden mr-8 text-n-1/50 transition-colors hover:text-n-1 lg:block"
-                        href="/login?new=true"
+                        className="button hidden mr-8 text-n-1/50 transition-colors hover:text-n-1 lg:block whitespace-nowrap"
+                        href="/login"
                     >
-                        New account
+                        Login
                     </Link>
                 }>
-                    <NewAccountLink />
+                    <LoginLink />
                 </Suspense>
-                <Button className="hidden lg:flex" href="/login">
-                    Sign in
+                <Button className="hidden lg:flex" href="/login?new=true">
+                    Sign up
                 </Button>
                 <Button
                     className="ml-auto lg:hidden"

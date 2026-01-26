@@ -15,21 +15,22 @@ const Features = ({}: FeaturesProps) => {
 
     return (
         <Section
-            className="py-10 md:pb-20 lg:pt-16 lg:pb-32 xl:pb-40 overflow-hidden"
+            className="py-10 md:pb-20 lg:pt-16 lg:pb-32 xl:pb-40 overflow-visible"
             customPaddings
         >
-            <div className="container relative z-2">
+            <div className="container relative z-2 overflow-visible">
                 <Splide
                     className="splide-custom splide-visible"
                     options={{
                         type: "fade",
                         rewind: true,
                         pagination: false,
+                        arrows: false,
                     }}
                     hasTrack={false}
                     ref={ref}
                 >
-                    <SplideTrack>
+                    <SplideTrack style={{ overflow: 'visible' }}>
                         {features.map((item) => (
                             <SplideSlide key={item.id}>
                                 <div className="lg:flex" key={item.id}>
@@ -44,7 +45,7 @@ const Features = ({}: FeaturesProps) => {
                                     </div>
                                     <Arrows
                                         className="my-10 lg:hidden"
-                                        prevClassName="mr-3"
+                                        prevClassName="mr-4"
                                         onPrev={() => ref.current?.go("<")}
                                         onNext={() => ref.current?.go(">")}
                                     />
@@ -62,7 +63,7 @@ const Features = ({}: FeaturesProps) => {
                                             className="absolute left-4 right-4 bottom-4 bg-n-8/95 md:left-8 md:right-8 md:bottom-8"
                                             title={item.notification}
                                         />
-                                        <div className="absolute top-6 right-6 flex items-center justify-center w-15 h-15 bg-n-1 rounded-full xl:top-8 xl:right-8">
+                                        <div className="absolute top-6 right-6 flex items-center justify-center w-15 h-15 bg-n-7 rounded-full xl:top-8 xl:right-8">
                                             <Image
                                                 src={item.iconUrl}
                                                 width={24}
@@ -78,7 +79,7 @@ const Features = ({}: FeaturesProps) => {
                     </SplideTrack>
                     <Arrows
                         className="hidden -mt-12 lg:flex"
-                        prevClassName="mr-3"
+                        prevClassName="mr-4"
                         onPrev={() => ref.current?.go("<")}
                         onNext={() => ref.current?.go(">")}
                     />

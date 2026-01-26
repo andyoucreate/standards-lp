@@ -9,8 +9,8 @@ import Heading from "@/components/Heading";
 type RoadmapProps = {};
 
 const Roadmap = ({}: RoadmapProps) => (
-    <Section className="overflow-hidden">
-        <div className="container md:pb-10">
+    <Section className="overflow-visible">
+        <div className="container md:pb-10 overflow-visible">
             <Heading tag="Ready to get started" title="What we’re working on" />
             <div className="relative grid gap-6 md:grid-cols-2 md:gap-4 md:pb-[7rem]">
                 {roadmap.map((item, index) => (

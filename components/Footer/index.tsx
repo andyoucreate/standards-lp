@@ -28,7 +28,7 @@ const Footer = ({}: FooterProps) => (
                 ))}
             </nav>
         </div>
-        <div className="lg:flex lg:items-center lg:justify-between">
+        <div className="lg:flex lg:items-center lg:justify-between px-8">
             <div className="hidden caption text-n-4 lg:block">
                 © {new Date().getFullYear()} UI8
             </div>

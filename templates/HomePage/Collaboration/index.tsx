@@ -12,7 +12,7 @@ const Collaboration = ({}: CollaborationProps) => {
             <div className="container lg:flex">
                 <div className="max-w-[25rem]">
                     <h2 className="h2 mb-4 md:mb-8">
-                        AI chat app for seamless collaboration
+                        Track top brands automatically
                     </h2>
                     <ul className="max-w-[22.5rem] mb-10 md:mb-14">
                         {content.map((item) => (
@@ -40,9 +40,6 @@ const Collaboration = ({}: CollaborationProps) => {
                 </div>
                 <div className="mt-15 lg:mt-0 lg:ml-auto xl:w-[37.5rem]">
                     <div className="relative lg:w-[22.5rem] lg:mx-auto">
-                        <p className="body-2 mb-4 text-n-4 md:mb-16 lg:mb-32">
-                            {text}
-                        </p>
                         <div className="relative left-1/2 flex w-[22.5rem] aspect-square border border-n-6 rounded-full -translate-x-1/2 scale-75 md:scale-100">
                             <div className="flex w-60 aspect-square m-auto border border-n-6 rounded-full">
                                 <div className="w-[5.75rem] aspect-square m-auto p-[0.1875rem] bg-conic-gradient rounded-full">
@@ -51,7 +48,7 @@ const Collaboration = ({}: CollaborationProps) => {
                                             src="/images/brainwave-symbol.svg"
                                             width={48}
                                             height={48}
-                                            alt="Brainwave"
+                                            alt="Emailoverflow"
                                         />
                                     </div>
                                 </div>

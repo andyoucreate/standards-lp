@@ -12,7 +12,7 @@ const Services = ({ containerClassName }: ServicesProps) => (
         <div className={`container ${containerClassName || ""}`}>
             <Heading
                 title="Generative AI made for creators."
-                text="Brainwave unlocks the potential of AI-powered applications"
+                text="Emailoverflow unlocks the potential of AI-powered applications"
             />
             <div className="relative">
                 <div className="relative z-1 flex items-center h-[38.75rem] mb-5 p-8 border border-n-1/10 rounded-3xl overflow-hidden lg:h-[38.75rem] lg:p-20 xl:h-[45.75rem]">
@@ -28,7 +28,7 @@ const Services = ({ containerClassName }: ServicesProps) => (
                     <div className="relative z-1 max-w-[17rem] ml-auto">
                         <h4 className="h4 mb-4">Smartest AI</h4>
                         <p className="bpdy-2 mb-[3.125rem] text-n-3">
-                            Brainwave unlocks the potential of AI-powered
+                            Emailoverflow unlocks the potential of AI-powered
                             applications
                         </p>
                         <ul className="body-2">
@@ -73,7 +73,7 @@ const Services = ({ containerClassName }: ServicesProps) => (
                             </p>
                         </div>
                         <div className="absolute top-8 right-8 max-w-[17.5rem] py-6 px-8 bg-black rounded-t-xl rounded-bl-xl font-code text-base lg:top-16 lg:right-[8.75rem] lg:max-w-[17.5rem]">
-                            Hey Brainwave, enhance this photo
+                            Hey Emailoverflow, enhance this photo
                             <svg
                                 className="absolute left-full bottom-0"
                                 xmlns="http://www.w3.org/2000/svg"
@@ -140,7 +140,7 @@ const Services = ({ containerClassName }: ServicesProps) => (
                                         src="/images/brainwave-symbol-white.svg"
                                         width={26}
                                         height={26}
-                                        alt="Brainwave"
+                                        alt="Emailoverflow"
                                     />
                                 </div>
                                 <div className="tagline absolute right-2.5 bottom-1 text-[0.625rem] text-n-3 uppercase">

@@ -13,24 +13,24 @@ const Arrows = ({
     onPrev,
     onNext,
 }: ArrowsProps) => (
-    <div className={`splide__arrows relative z-10 flex ${className || ""}`}>
+    <div className={`relative z-10 flex items-center ${className || ""}`}>
         <button
-            className={`splide__arrow splide__arrow--prev ${
+            className={`group relative flex items-center justify-center w-12 h-12 bg-transparent border border-solid border-n-4/50 rounded-full transition-colors hover:border-n-3 ${
                 prevClassName || ""
             }`}
             onClick={onPrev}
         >
-            <svg className="w-4 h-4 fill-n-4">
-                <path d="M8.707 1.707a1 1 0 0 0 0-1.414 1 1 0 0 0-1.414 0l-7 7a1 1 0 0 0 0 1.414l7 7a1 1 0 0 0 1.414-1.414L3.414 9H15a1 1 0 1 0 0-2H3.414l5.293-5.293z" />
+            <svg className="w-4 h-4 fill-n-4 transition-colors group-hover:fill-n-1" width="16" height="16" viewBox="0 0 16 16">
+                <path d="M8.707 14.293a1 1 0 0 1 0 1.414 1 1 0 0 1-1.414 0l-7-7a1 1 0 0 1 0-1.414l7-7a1 1 0 0 1 1.414 1.414L3.414 7H15a1 1 0 0 1 0 2H3.414l5.293 5.293z" />
             </svg>
         </button>
         <button
-            className={`splide__arrow splide__arrow--next ${
+            className={`group relative flex items-center justify-center w-12 h-12 bg-transparent border border-solid border-n-4/50 rounded-full transition-colors hover:border-n-3 ${
                 nextClassName || ""
             }`}
             onClick={onNext}
         >
-            <svg className="w-4 h-4 fill-n-4">
+            <svg className="w-4 h-4 fill-n-4 transition-colors group-hover:fill-n-1" width="16" height="16" viewBox="0 0 16 16">
                 <path d="M7.293 1.707a1 1 0 0 1 0-1.414 1 1 0 0 1 1.414 0l7 7a1 1 0 0 1 0 1.414l-7 7a1 1 0 0 1-1.414-1.414L12.586 9H1a1 1 0 1 1 0-2h11.586L7.293 1.707z" />
             </svg>
         </button>

@@ -12,19 +12,12 @@ const Join = ({}: JoinProps) => (
                     <h1 className="h1 mb-6">
                         Be part of the future of{" "}
                         <span className="inline-block relative">
-                            Brainwave
-                            <Image
-                                className="absolute top-full left-0 w-full"
-                                src="/images/curve.png"
-                                width={624}
-                                height={28}
-                                alt="Curve"
-                            />
+                            Emailoverflow
                         </span>
                     </h1>
                     <p className="body-1 mb-8 text-n-4">
-                        Unleash the power of AI within Brainwave. Upgrade your
-                        productivity with Brainwave, the open AI chat app.
+                        Unleash the power of AI within Emailoverflow. Upgrade your
+                        productivity with Emailoverflow, the open AI chat app.
                     </p>
                     <Button href="/pricing" white>
                         Get started
@@ -48,24 +41,6 @@ const Join = ({}: JoinProps) => (
                     </div>
                 </div>
             </div>
-        </div>
-        <div className="absolute -top-[5.75rem] left-[18.5rem] -z-1 w-[19.8125rem] pointer-events-none lg:-top-15 lg:left-[5.5rem]">
-            <Image
-                className="w-full"
-                src="/images/join/shapes-1.svg"
-                width={317}
-                height={293}
-                alt="Shapes 1"
-            />
-        </div>
-        <div className="absolute right-[15rem] -bottom-[7rem] -z-1 w-[28.1875rem] pointer-events-none lg:right-7 lg:-bottom-[5rem]">
-            <Image
-                className="w-full"
-                src="/images/join/shapes-2.svg"
-                width={451}
-                height={266}
-                alt="Shapes 2"
-            />
         </div>
     </Section>
 );

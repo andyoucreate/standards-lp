@@ -1,76 +1,76 @@
 const text =
-    "With smart automation and top-notch security, it's the perfect solution for teams looking to work smarter.";
+    "Monitor marketing strategies from the world's best brands. Get insights on emails, ads, landing pages, and more in real-time.";
 
 const content = [
     {
         id: "0",
-        title: "Seamless Integration",
+        title: "Automatic Tracking",
         text: text,
     },
     {
         id: "1",
-        title: "Smart Automation",
+        title: "Real-Time Updates",
     },
     {
         id: "2",
-        title: "Top-notch Security",
+        title: "Global Coverage",
     },
 ];
 
 const apps = [
     {
         id: "0",
-        title: "Figma",
-        icon: "/images/collaboration/figma.png",
+        title: "Apple",
+        icon: "/images/brands/Apple.svg",
         width: 26,
         height: 36,
     },
     {
         id: "1",
-        title: "Notion",
-        icon: "/images/collaboration/notion.png",
+        title: "Nike",
+        icon: "/images/brands/Nike.svg",
         width: 34,
         height: 36,
     },
     {
         id: "2",
-        title: "Discord",
-        icon: "/images/collaboration/discord.png",
+        title: "Chanel",
+        icon: "/images/brands/Chanel.svg",
         width: 36,
         height: 28,
     },
     {
         id: "3",
-        title: "Slack",
-        icon: "/images/collaboration/slack.png",
+        title: "Louis Vuitton",
+        icon: "/images/brands/LouisVuitton.svg",
         width: 34,
         height: 35,
     },
     {
         id: "4",
-        title: "Photoshop",
-        icon: "/images/collaboration/photoshop.png",
+        title: "Mercedes-Benz",
+        icon: "/images/brands/Benz.svg",
         width: 34,
         height: 34,
     },
     {
         id: "5",
-        title: "Protopie",
-        icon: "/images/collaboration/protopie.png",
+        title: "Lululemon",
+        icon: "/images/brands/Lululemon.svg",
         width: 34,
         height: 34,
     },
     {
         id: "6",
-        title: "Framer",
-        icon: "/images/collaboration/framer.png",
+        title: "Glossier",
+        icon: "/images/brands/Glossier.svg",
         width: 26,
         height: 34,
     },
     {
         id: "7",
-        title: "Raindrop",
-        icon: "/images/collaboration/raindrop.png",
+        title: "Starbucks",
+        icon: "/images/brands/Starbucks.svg",
         width: 38,
         height: 32,
     },

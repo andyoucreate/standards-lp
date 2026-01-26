@@ -12,7 +12,7 @@ const Logo = ({ className }: LogoProps) => (
             width={190}
             height={40}
             priority={true}
-            alt="Brainwave"
+            alt="Emailoverflow"
         />
     </Link>
 );

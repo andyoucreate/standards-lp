@@ -8,8 +8,8 @@ type PricingProps = {};
 
 const Pricing = ({}: PricingProps) => {
     return (
-        <Section className="overflow-hidden">
-            <div className="container relative z-2">
+        <Section className="overflow-visible">
+            <div className="container relative z-2 overflow-visible">
                 <div className="hidden relative justify-center mb-[6.5rem] lg:flex">
                     <Image
                         className="relative z-1"
@@ -29,7 +29,7 @@ const Pricing = ({}: PricingProps) => {
                     </div>
                 </div>
                 <Heading
-                    tag="Get started with Brainwave"
+                    tag="Get started with Emailoverflow"
                     title="Pay once, use forever"
                 />
                 <div className="relative">

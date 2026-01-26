@@ -10,8 +10,8 @@ const Hero = ({}: HeroProps) => (
             <Heading
                 className="md:mt-12 lg:max-w-[30rem] lg:mt-20"
                 textAlignClassName="md:text-left"
-                titleLarge="Main features of Brainwave"
-                textLarge="Here are some of the core features of Brainwavethat make it stand out from other chat applications"
+                titleLarge="Main features of Emailoverflow"
+                textLarge="Here are some of the core features of Emailoverflowthat make it stand out from other chat applications"
             />
             <div className="relative">
                 <Image

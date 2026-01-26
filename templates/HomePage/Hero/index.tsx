@@ -20,35 +20,41 @@ const Hero = ({}: HeroProps) => {
 
     return (
         <Section
-            className="-mt-[4.75rem] pt-[8.25rem] pb-4 overflow-hidden md:pt-[9.75rem] md:pb-[4.8rem] lg:-mt-[5.25rem] lg:-mb-40 lg:pt-[12.25rem] lg:pb-[13.8rem]"
+            className="-mt-[6.25rem] pt-[8.25rem] pb-4 overflow-hidden md:pt-[9.75rem] md:pb-[4.8rem] lg:-mt-[6.75rem] lg:-mb-40 lg:pt-[12.25rem] lg:pb-[13.8rem]"
             crosses
-            crossesOffset="lg:translate-y-[5.25rem]"
+            crossesOffset="lg:translate-y-[6.75rem]"
             customPaddings
         >
             <div className="container relative" ref={parallaxRef}>
                 <div className="relative z-1 max-w-[62rem] mx-auto mb-[3.875rem] text-center md:mb-20 lg:mb-[6.25rem]">
                     <h1 className="h1 mb-6">
-                        Explore the Possibilities of&nbsp;AI&nbsp;Chatting with{" "}
+                        Discover real-world
+                        <br />
                         <span className="inline-block relative">
-                            Brainwave
-                            <Image
-                                className="absolute top-full left-0 w-full xl:-mt-2"
-                                src="/images/curve.png"
-                                width={624}
-                                height={28}
-                                alt="Curve"
-                            />
+                            email inspiration
                         </span>
                     </h1>
                     <p className="body-1 max-w-3xl mx-auto mb-6 text-n-2 lg:mb-8">
-                        Unleash the power of AI within Brainwave. Upgrade your
-                        productivity with Brainwave, the open AI chat app.
+                        Track your competitors' emails, ads, and landing pages automatically. 
+                        Save 20+ hours per month with unlimited marketing inspiration.
                     </p>
-                    <Button href="/pricing" white>
-                        Get started
-                    </Button>
+                    <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
+                        <Button href="/pricing" white>
+                            Get started
+                        </Button>
+                        <Button href="https://cal.com/your-calendar-link" secondary>
+                            Schedule a demo
+                        </Button>
+                    </div>
+                    <div className="mt-8 flex justify-center">
+                        <div className="px-6 py-4 bg-n-7 border border-n-6 rounded-2xl">
+                            <div className="text-xs text-n-3 mb-2 text-center">Emails indexés</div>
+                            <div className="text-3xl font-bold text-n-1 mb-1 text-center">4 782 643</div>
+                            <div className="text-xs text-n-3 text-center">Mis à jour en temps réel</div>
+                        </div>
+                    </div>
                 </div>
-                <div className="relative max-w-[23.25rem] mx-auto md:max-w-5xl xl:mb-24">
+                <div className="relative max-w-[23.25rem] mx-auto md:max-w-5xl lg:max-w-7xl xl:max-w-[90rem] xl:mb-24">
                     <div className="relative z-1 p-0.5 rounded-2xl bg-conic-gradient">
                         <div className="relative bg-n-8 rounded-[0.875rem]">
                             <div className="h-[1.375rem] bg-[#43435C] rounded-t-[0.875rem]"></div>
@@ -91,81 +97,6 @@ const Hero = ({}: HeroProps) => {
                     </div>
                     <div className="relative z-1 h-6 mx-2.5 bg-[#1B1B2E] shadow-xl rounded-b-[1.25rem] lg:h-6 lg:mx-8"></div>
                     <div className="relative z-1 h-6 mx-6 bg-[#1B1B2E]/70 shadow-xl rounded-b-[1.25rem] lg:h-6 lg:mx-20"></div>
-                    <div className="absolute -top-[54%] left-1/2 w-[234%] -translate-x-1/2 md:-top-[46%] md:w-[138%] lg:-top-[104%]">
-                        <Image
-                            className="w-full"
-                            src="/images/hero/background.jpg"
-                            width={1440}
-                            height={1800}
-                            quality={100}
-                            alt="Hero"
-                        />
-                    </div>
-                    <div className="absolute -top-[42.375rem] left-1/2 w-[78rem] aspect-square border border-n-2/5 rounded-full -translate-x-1/2 md:-top-[38.5rem] xl:-top-[32rem]">
-                        <div className="absolute top-1/2 left-1/2 w-[65.875rem] aspect-square border border-n-2/10 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-                        <div className="absolute top-1/2 left-1/2 w-[51.375rem] aspect-square border border-n-2/10 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-                        <div className="absolute top-1/2 left-1/2 w-[36.125rem] aspect-square border border-n-2/10 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-                        <div className="absolute top-1/2 left-1/2 w-[23.125rem] aspect-square border border-n-2/10 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-                        {/* <MouseParallax
-                            strength={0.07}
-                            parallaxContainerRef={parallaxRef}
-                        > */}
-                        <div className="absolute bottom-1/2 left-1/2 w-0.25 h-1/2 origin-bottom rotate-[46deg]">
-                            <div
-                                className={`w-2 h-2 -ml-1 -mt-36 bg-gradient-to-b from-[#DD734F] to-[#1A1A32] rounded-full transition-transform duration-500 ease-out ${
-                                    mounted
-                                        ? "translate-y-0 opacity-100"
-                                        : "translate-y-10 opacity-0"
-                                }`}
-                            ></div>
-                        </div>
-                        <div className="absolute bottom-1/2 left-1/2 w-0.25 h-1/2 origin-bottom -rotate-[56deg]">
-                            <div
-                                className={`w-4 h-4 -ml-1 -mt-32 bg-gradient-to-b from-[#DD734F] to-[#1A1A32] rounded-full transition-transform duration-500 ease-out ${
-                                    mounted
-                                        ? "translate-y-0 opacity-100"
-                                        : "translate-y-10 opacity-0"
-                                }`}
-                            ></div>
-                        </div>
-                        <div className="absolute bottom-1/2 left-1/2 w-0.25 h-1/2 origin-bottom rotate-[54deg]">
-                            <div
-                                className={`hidden w-4 h-4 -ml-1 mt-[12.9rem] bg-gradient-to-b from-[#B9AEDF] to-[#1A1A32] rounded-full xl:block transit transition-transform duration-500 ease-out ${
-                                    mounted
-                                        ? "translate-y-0 opacity-100"
-                                        : "translate-y-10 opacity-0"
-                                }`}
-                            ></div>
-                        </div>
-                        <div className="absolute bottom-1/2 left-1/2 w-0.25 h-1/2 origin-bottom -rotate-[65deg]">
-                            <div
-                                className={`w-3 h-3 -ml-1.5 mt-52 bg-gradient-to-b from-[#B9AEDF] to-[#1A1A32] rounded-full transition-transform duration-500 ease-out ${
-                                    mounted
-                                        ? "translate-y-0 opacity-100"
-                                        : "translate-y-10 opacity-0"
-                                }`}
-                            ></div>
-                        </div>
-                        <div className="absolute bottom-1/2 left-1/2 w-0.25 h-1/2 origin-bottom -rotate-[85deg]">
-                            <div
-                                className={`w-6 h-6 -ml-3 -mt-3 bg-gradient-to-b from-[#88E5BE] to-[#1A1A32] rounded-full transition-transform duration-500 ease-out ${
-                                    mounted
-                                        ? "translate-y-0 opacity-100"
-                                        : "translate-y-10 opacity-0"
-                                }`}
-                            ></div>
-                        </div>
-                        <div className="absolute bottom-1/2 left-1/2 w-0.25 h-1/2 origin-bottom rotate-[70deg]">
-                            <div
-                                className={`w-6 h-6 -ml-3 -mt-3 bg-gradient-to-b from-[#88E5BE] to-[#1A1A32] rounded-full transition-transform duration-500 ease-out ${
-                                    mounted
-                                        ? "translate-y-0 opacity-100"
-                                        : "translate-y-10 opacity-0"
-                                }`}
-                            ></div>
-                        </div>
-                        {/* </MouseParallax> */}
-                    </div>
                 </div>
                 <Logos className="hidden relative z-10 mt-20 lg:block" />
             </div>

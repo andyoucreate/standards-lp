@@ -16,17 +16,12 @@ export const navigation = [
     },
     {
         id: "3",
-        title: "Roadmap",
-        url: "/roadmap",
-    },
-    {
-        id: "4",
         title: "New account",
         url: "/login?new=true",
         onlyMobile: true,
     },
     {
-        id: "5",
+        id: "4",
         title: "Sign in",
         url: "/login",
         onlyMobile: true,

@@ -9,16 +9,16 @@
   --font-sans: "Manrope", system-ui, sans-serif;
 
   /* Primary Colors */
-  --color-primary-50: oklch(0.97 0.02 230);
-  --color-primary-100: oklch(0.94 0.04 230);
-  --color-primary-200: oklch(0.88 0.08 230);
-  --color-primary-300: oklch(0.80 0.12 230);
-  --color-primary-400: oklch(0.72 0.15 230);
-  --color-primary-500: oklch(0.65 0.15 230); /* #558BF4 */
-  --color-primary-600: oklch(0.55 0.15 230);
-  --color-primary-700: oklch(0.45 0.15 230);
-  --color-primary-800: oklch(0.35 0.12 230);
-  --color-primary-900: oklch(0.25 0.08 230);
+  --color-primary-50: oklch(0.97 0.03 85);
+  --color-primary-100: oklch(0.94 0.06 85);
+  --color-primary-200: oklch(0.90 0.10 85);
+  --color-primary-300: oklch(0.85 0.12 85);
+  --color-primary-400: oklch(0.80 0.14 85);
+  --color-primary-500: oklch(0.82 0.12 85); /* #F2C84B */
+  --color-primary-600: oklch(0.70 0.12 85);
+  --color-primary-700: oklch(0.60 0.12 85);
+  --color-primary-800: oklch(0.50 0.10 85);
+  --color-primary-900: oklch(0.40 0.08 85);
 
   /* Secondary Colors */
   --color-secondary-50: oklch(0.97 0.01 220);
@@ -45,9 +45,9 @@
   --color-muted-foreground: oklch(0.55 0 0);
   --color-border: oklch(0.90 0 0); /* #E5E5E5 */
   --color-input: oklch(0.94 0 0); /* #EFEFEF */
-  --color-ring: oklch(0.65 0.15 230);
+  --color-ring: oklch(0.82 0.12 85);
 
-  /* Legacy Brainwave Colors (for compatibility) */
+  /* Legacy Emailoverflow Colors - Dark Mode (default) */
   --color-n-1: oklch(1 0 0); /* #FFFFFF */
   --color-n-2: oklch(0.85 0.02 280); /* #CAC6DD */
   --color-n-3: oklch(0.75 0.02 280); /* #ADA8C3 */
@@ -60,12 +60,12 @@
   --color-stroke-1: oklch(0.20 0.01 280); /* #26242C */
 
   /* Accent Colors */
-  --color-color-1: oklch(0.70 0.20 300); /* #AC6AFF */
-  --color-color-2: oklch(0.85 0.12 70); /* #FFC876 */
-  --color-color-3: oklch(0.70 0.18 25); /* #FF776F */
-  --color-color-4: oklch(0.75 0.18 140); /* #7ADB78 */
-  --color-color-5: oklch(0.65 0.15 270); /* #858DFF */
-  --color-color-6: oklch(0.75 0.15 340); /* #FF98E2 */
+  --color-color-1: oklch(0.82 0.12 85); /* #F2C84B - Main accent */
+  --color-color-2: oklch(0.82 0.12 85); /* #F2C84B */
+  --color-color-3: oklch(0.82 0.12 85); /* #F2C84B */
+  --color-color-4: oklch(0.82 0.12 85); /* #F2C84B */
+  --color-color-5: oklch(0.82 0.12 85); /* #F2C84B */
+  --color-color-6: oklch(0.82 0.12 85); /* #F2C84B */
 
   /* Spacing */
   --spacing-0-25: 0.0625rem;
@@ -78,16 +78,21 @@
 }
 
 /* ============================================
-   Dark Mode Overrides
+   Light Mode Overrides
    ============================================ */
 
-.dark {
-  --color-background: oklch(0.15 0 0); /* #1C1C1C */
-  --color-foreground: oklch(0.98 0 0); /* #FAFAFA */
-  --color-muted: oklch(0.22 0 0); /* #2E2E2E */
-  --color-muted-foreground: oklch(0.65 0 0);
-  --color-border: oklch(0.25 0 0); /* #333333 */
-  --color-input: oklch(0.25 0 0); /* #333333 */
+html:not(.dark) {
+  /* Light mode - inverted background/foreground */
+  --color-n-1: oklch(0.15 0 0); /* Dark text */
+  --color-n-2: oklch(0.45 0.02 280); /* Medium-dark text */
+  --color-n-3: oklch(0.55 0.02 280); /* Medium text */
+  --color-n-4: oklch(0.65 0.02 280); /* Medium-light text */
+  --color-n-5: oklch(0.80 0.02 280); /* Light elements */
+  --color-n-6: oklch(0.88 0.01 280); /* Borders */
+  --color-n-7: oklch(0.94 0 0); /* Light bg elements */
+  --color-n-8: oklch(0.98 0 0); /* Main bg */
+
+  --color-stroke-1: oklch(0.85 0.01 280); /* Light stroke */
 }
 
 /* ============================================
@@ -95,8 +100,12 @@
    ============================================ */
 
 @layer base {
+  html {
+    overflow-x: hidden;
+  }
+
   body {
-    @apply bg-n-8 text-n-1 antialiased;
+    @apply bg-n-8 text-n-1 antialiased transition-colors duration-300;
   }
 }
 
@@ -172,6 +181,21 @@
   .tap-highlight-color {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
+
+  .bg-conic-gradient {
+    background: conic-gradient(
+      from 225deg,
+      #F2C84B,
+      #F2C84B,
+      #F2C84B,
+      #F2C84B,
+      #F2C84B
+    );
+  }
+
+  .bg-radial-gradient {
+    background: radial-gradient(var(--tw-gradient-stops));
+  }
 }
 
 /* ============================================
@@ -179,24 +203,25 @@
    ============================================ */
 
 @layer components {
-  .splide-custom .splide__arrow {
-    @apply relative top-0 left-0 right-0 flex items-center justify-center w-12 h-12 bg-transparent border border-solid border-n-4/50 rounded-full transform-none transition-colors hover:border-n-3;
+  /* Cache les flèches par défaut de Splide */
+  .splide__arrows.splide__arrows--ltr {
+    display: none;
   }
 
-  .splide-custom .splide__arrow:hover svg {
-    @apply fill-n-1;
+  .splide__track {
+    overflow: visible !important;
   }
 
-  .splide-custom .splide__arrow svg {
-    @apply w-4 h-4 fill-n-4 transform-none transition-colors;
+  .splide-visible,
+  .splide-visible .splide__track,
+  .splide-visible .splide__list {
+    overflow: visible;
   }
 
-  .splide-visible .splide__track {
-    @apply overflow-visible;
-  }
-
-  .splide-pricing .splide__list {
-    @apply lg:grid lg:grid-cols-3 lg:gap-4;
+  .splide-custom,
+  .splide-custom .splide__track,
+  .splide-custom .splide__list {
+    overflow: visible;
   }
 
   .splide-benefits .splide__list {

@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { Splide, SplideTrack, SplideSlide } from "@splidejs/react-splide";
 import Section from "@/components/Section";
 import Tagline from "@/components/Tagline";
@@ -10,9 +11,12 @@ import Heading from "@/components/Heading";
 
 type TestimonialsProps = {};
 
-const Testimonials = ({}: TestimonialsProps) => (
-    <Section className="overflow-hidden">
-        <div className="container relative z-2">
+const Testimonials = ({}: TestimonialsProps) => {
+    const ref = useRef<any>(null);
+
+    return (
+    <Section>
+        <div className="container relative z-2" style={{ overflow: 'visible' }}>
             <Heading
                 tag="Ready to get started"
                 title="What the community is saying"
@@ -29,10 +33,12 @@ const Testimonials = ({}: TestimonialsProps) => (
                     },
                     rewind: true,
                     pagination: false,
+                    arrows: false,
                 }}
                 hasTrack={false}
+                ref={ref}
             >
-                <SplideTrack>
+                <SplideTrack style={{ overflow: 'visible' }}>
                     {testimonials.map((item) => (
                         <SplideSlide key={item.id}>
                             <div className="relative flex h-full p-4 rounded-t-xl overflow-hidden lg:w-[46.125rem]">
@@ -80,11 +86,14 @@ const Testimonials = ({}: TestimonialsProps) => (
                 </SplideTrack>
                 <Arrows
                     className="justify-center mt-12 md:mt-15 xl:mt-20"
-                    prevClassName="mr-8"
+                    prevClassName="mr-4"
+                    onPrev={() => ref.current?.go("<")}
+                    onNext={() => ref.current?.go(">")}
                 />
             </Splide>
         </div>
     </Section>
-);
+    );
+};
 
 export default Testimonials;

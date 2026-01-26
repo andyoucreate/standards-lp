@@ -7,47 +7,47 @@ type LogosProps = {
 const Logos = ({ className }: LogosProps) => (
     <div className={className}>
         <h5 className="tagline mb-6 text-center text-n-1/50">
-            Helping people create beautiful content at
+            Trusted by teams at
         </h5>
         <ul className="flex">
             <li className="flex items-center justify-center flex-1 h-[8.5rem]">
                 <Image
-                    src="/images/yourlogo.svg"
-                    width={134}
-                    height={28}
-                    alt="Logo 3"
+                    src="/images/brands/Nike.svg"
+                    width={80}
+                    height={80}
+                    alt="Nike"
                 />
             </li>
             <li className="flex items-center justify-center flex-1 h-[8.5rem]">
                 <Image
-                    src="/images/yourlogo.svg"
-                    width={134}
-                    height={28}
-                    alt="Logo 3"
+                    src="/images/brands/Sephora.svg"
+                    width={80}
+                    height={80}
+                    alt="Sephora"
                 />
             </li>
             <li className="flex items-center justify-center flex-1 h-[8.5rem]">
                 <Image
-                    src="/images/yourlogo.svg"
-                    width={134}
-                    height={28}
-                    alt="Logo 3"
+                    src="/images/brands/Apple.svg"
+                    width={80}
+                    height={80}
+                    alt="Apple"
                 />
             </li>
             <li className="flex items-center justify-center flex-1 h-[8.5rem]">
                 <Image
-                    src="/images/yourlogo.svg"
-                    width={134}
-                    height={28}
-                    alt="Logo 3"
+                    src="/images/brands/Booking.svg"
+                    width={80}
+                    height={80}
+                    alt="Booking"
                 />
             </li>
             <li className="flex items-center justify-center flex-1 h-[8.5rem]">
                 <Image
-                    src="/images/yourlogo.svg"
-                    width={134}
-                    height={28}
-                    alt="Logo 3"
+                    src="/images/brands/Netflix.svg"
+                    width={80}
+                    height={80}
+                    alt="Netflix"
                 />
             </li>
         </ul>

@@ -145,7 +145,7 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
                     </div>
 
                     <div className="flex justify-center pt-4">
-                        <Button type="submit">
+                        <Button >
                             Envoyer le message
                         </Button>
                     </div>

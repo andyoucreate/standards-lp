@@ -77,11 +77,7 @@ const Hero = ({}: HeroProps) => {
             <div className="container relative" ref={parallaxRef}>
                 <div className="relative z-1 max-w-[62rem] mx-auto mb-[3.875rem] text-center md:mb-20 lg:mb-[6.25rem]">
                     <h1 className="h1 mb-6">
-                        Découvrez l'inspiration
-                        <br />
-                        <span className="inline-block relative">
-                            email réelle
-                        </span>
+                        Ta meilleure campagne email en 2min
                     </h1>
                     <p className="body-1 max-w-3xl mx-auto mb-6 text-n-2 lg:mb-8">
                         A partir des emails et séquences de vos concurrents et marques préférées, générez à la volée des rapports stratégiques, mais surtout vos propres emails et séquences complètes, en un clic.
@@ -90,7 +86,7 @@ const Hero = ({}: HeroProps) => {
                         <Button href="/pricing" white>
                             Commencer
                         </Button>
-                        <Button href="https://cal.com/your-calendar-link" gray>
+                        <Button href="https://cal.com/your-calendar-link" white>
                             Planifier une démo
                         </Button>
                     </div>

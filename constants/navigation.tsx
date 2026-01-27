@@ -1,29 +1,35 @@
 export const navigation = [
     {
         id: "0",
-        title: "Features",
-        url: "/features",
+        title: "Contact",
+        url: "/contact",
     },
     {
         id: "1",
-        title: "Pricing",
-        url: "/pricing",
+        title: "Login",
+        url: "/login",
     },
     {
         id: "2",
-        title: "How to use",
-        url: "/how-to-use",
+        title: "Sign up",
+        url: "/login?new=true",
     },
     {
         id: "3",
-        title: "New account",
-        url: "/login?new=true",
+        title: "Sign in",
+        url: "/login",
         onlyMobile: true,
     },
     {
         id: "4",
-        title: "Sign in",
-        url: "/login",
-        onlyMobile: true,
+        title: "Terms & Conditions",
+        url: "/terms",
+        footerOnly: true,
+    },
+    {
+        id: "5",
+        title: "DMCA",
+        url: "/dmca",
+        footerOnly: true,
     },
 ];

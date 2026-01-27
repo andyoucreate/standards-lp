@@ -24,7 +24,7 @@ const Button = ({
         px || "px-7"
     } ${
         secondary
-            ? "text-n-1 border-2 border-n-1/50 hover:border-n-1"
+            ? "text-n-1 border-2 border-n-1 bg-transparent"
             : "text-n-8"
     } transition-colors hover:text-color-1 whitespace-nowrap ${
         className || ""
@@ -32,7 +32,7 @@ const Button = ({
 
     const spanClasses = `relative z-10`;
 
-    const renderSvgs = secondary ? null : svgs(white);
+    const renderSvgs = secondary ? null : svgs(false);
 
     return href ? (
         href.startsWith("mailto:") ? (

@@ -31,9 +31,10 @@ const HowItWorks = ({}: HowItWorksProps) => {
                         arrows: false,
                     }}
                     hasTrack={false}
+                    onMoved={(e, newIndex) => setActiveIndex(newIndex)}
                     ref={ref}
                 >
-                    <div className="hidden grid-cols-4 gap-6 mb-20 xl:grid">
+                    <div className="hidden grid-cols-4 gap-6 mb-20 lg:grid lg:mb-24">
                         {howItWorks.map((item, index) => (
                             <div
                                 className="group cursor-pointer"
@@ -59,7 +60,7 @@ const HowItWorks = ({}: HowItWorksProps) => {
                     <SplideTrack style={{ overflow: 'visible' }}>
                         {howItWorks.map((item, index) => (
                             <SplideSlide key={item.id}>
-                                <div className="lg:flex lg:flex-row-reverse lg:items-center">
+                                <div className="lg:flex lg:flex-row-reverse lg:items-center pb-6 lg:pb-0">
                                     <div className="">
                                         <Tagline className="mb-4 lg:mb-6">
                                             How it work: 0{index + 1}.
@@ -103,6 +104,26 @@ const HowItWorks = ({}: HowItWorksProps) => {
                         />
                     </div>
                 </Splide>
+                <div className="flex justify-center mt-12 -mx-2 lg:hidden">
+                    {howItWorks.map((item, index) => (
+                        <button
+                            className="relative w-6 h-6 mx-2"
+                            onClick={() => handleClick(index)}
+                            key={item.id}
+                        >
+                            <span
+                                className={`absolute inset-0 bg-conic-gradient rounded-full transition-opacity ${
+                                    index === activeIndex
+                                        ? "opacity-100"
+                                        : "opacity-0"
+                                }`}
+                            ></span>
+                            <span className="absolute inset-0.25 bg-n-8 rounded-full">
+                                <span className="absolute inset-2 bg-n-1 rounded-full"></span>
+                            </span>
+                        </button>
+                    ))}
+                </div>
             </div>
         </Section>
     );

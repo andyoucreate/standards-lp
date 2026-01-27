@@ -28,17 +28,12 @@ const Collaboration = ({}: CollaborationProps) => {
                                         {item.title}
                                     </h6>
                                 </div>
-                                {item.text && (
-                                    <p className="body-2 mt-3 text-n-4">
-                                        {item.text}
-                                    </p>
-                                )}
                             </li>
                         ))}
                     </ul>
                     <Button>Try it now</Button>
                 </div>
-                <div className="mt-15 lg:mt-0 lg:ml-auto xl:w-[37.5rem]">
+                <div className="mt-15 lg:mt-0 lg:mx-auto xl:w-[37.5rem]">
                     <div className="relative lg:w-[22.5rem] lg:mx-auto">
                         <div className="relative left-1/2 flex w-[22.5rem] aspect-square border border-n-6 rounded-full -translate-x-1/2 scale-75 md:scale-100">
                             <div className="flex w-60 aspect-square m-auto border border-n-6 rounded-full">
@@ -100,22 +95,6 @@ const Collaboration = ({}: CollaborationProps) => {
                                     </li>
                                 ))}
                             </ul>
-                            <div className="hidden absolute top-1/2 right-full w-[32.625rem] -mt-1 mr-10 pointer-events-none xl:block">
-                                <Image
-                                    src="/images/collaboration/curve-1.svg"
-                                    width={522}
-                                    height={182}
-                                    alt="Curve 1"
-                                />
-                            </div>
-                            <div className="hidden absolute top-1/2 left-full w-[10.125rem] -mt-1 ml-10 pointer-events-none xl:block">
-                                <Image
-                                    src="/images/collaboration/curve-2.svg"
-                                    width={162}
-                                    height={76}
-                                    alt="Curve 2"
-                                />
-                            </div>
                         </div>
                     </div>
                 </div>

@@ -46,11 +46,22 @@ const Hero = ({}: HeroProps) => {
                             Schedule a demo
                         </Button>
                     </div>
-                    <div className="mt-8 flex justify-center">
-                        <div className="px-6 py-4 bg-n-7 border border-n-6 rounded-2xl">
-                            <div className="text-xs text-n-3 mb-2 text-center">Emails indexés</div>
-                            <div className="text-3xl font-bold text-n-1 mb-1 text-center">4 782 643</div>
-                            <div className="text-xs text-n-3 text-center">Mis à jour en temps réel</div>
+                    <div className="mt-12 flex justify-center gap-16 flex-wrap lg:gap-24">
+                        <div className="text-center">
+                            <div className="text-sm text-n-3 mb-3">Emails indexés</div>
+                            <div className="text-5xl font-bold text-n-1">4.8M+</div>
+                        </div>
+                        <div className="text-center">
+                            <div className="text-sm text-n-3 mb-3">Marques suivies</div>
+                            <div className="text-5xl font-bold text-n-1">850+</div>
+                        </div>
+                        <div className="text-center">
+                            <div className="text-sm text-n-3 mb-3">Veille automatique</div>
+                            <div className="text-5xl font-bold text-n-1">24/7</div>
+                        </div>
+                        <div className="text-center">
+                            <div className="text-sm text-n-3 mb-3">Industries</div>
+                            <div className="text-5xl font-bold text-n-1">50+</div>
                         </div>
                     </div>
                 </div>
@@ -95,8 +106,8 @@ const Hero = ({}: HeroProps) => {
                             </ScrollParallax>
                         </div>
                     </div>
-                    <div className="relative z-1 h-6 mx-2.5 bg-[#1B1B2E] shadow-xl rounded-b-[1.25rem] lg:h-6 lg:mx-8"></div>
-                    <div className="relative z-1 h-6 mx-6 bg-[#1B1B2E]/70 shadow-xl rounded-b-[1.25rem] lg:h-6 lg:mx-20"></div>
+                    <div className="relative z-1 h-6 mx-2.5 bg-black/5 shadow-xl rounded-b-[1.25rem] lg:h-6 lg:mx-8"></div>
+                    <div className="relative z-1 h-6 mx-6 bg-black/[0.025] shadow-xl rounded-b-[1.25rem] lg:h-6 lg:mx-20"></div>
                 </div>
                 <Logos className="hidden relative z-10 mt-20 lg:block" />
             </div>

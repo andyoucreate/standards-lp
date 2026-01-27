@@ -66,6 +66,7 @@ const PricingList = ({ monthly = true }: PricingListProps) => {
                                                   ).toFixed(1)
                                                 : item.price}
                                         </div>
+                                        <div className="h6 ml-2 text-n-1/50">/mois</div>
                                     </>
                                 )}
                             </div>
@@ -133,6 +134,7 @@ const PricingList = ({ monthly = true }: PricingListProps) => {
                                               ).toFixed(1)
                                             : item.price}
                                     </div>
+                                    <div className="h6 ml-2 text-n-1/50">/mois</div>
                                 </>
                             )}
                         </div>

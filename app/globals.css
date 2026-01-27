@@ -227,11 +227,42 @@ html:not(.dark) {
   .splide-benefits .splide__list {
     @apply md:grid md:grid-cols-3 md:gap-x-10 md:gap-y-[4.5rem] xl:gap-y-[6rem];
   }
+
+  .splide-custom .splide__pagination {
+    @apply bottom-0;
+  }
+
+  @media (min-width: 1024px) {
+    .splide-custom .splide__pagination {
+      @apply hidden;
+    }
+  }
+
+  .splide-custom .splide__pagination__page {
+    @apply w-2 h-2 bg-n-4 rounded-full opacity-40 transition-opacity;
+  }
+
+  .splide-custom .splide__pagination__page.is-active {
+    @apply opacity-100 bg-color-1;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 /* ============================================
    Keyframes
    ============================================ */
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
 
 @keyframes accordion-down {
   from {

@@ -1,5 +1,4 @@
 import { useRef, useState } from "react";
-import Link from "next/link";
 import { Splide, SplideTrack, SplideSlide } from "@splidejs/react-splide";
 import Section from "@/components/Section";
 import Heading from "@/components/Heading";
@@ -46,9 +45,8 @@ const Benefits = ({}: BenefitsProps) => {
                     <SplideTrack style={{ overflow: 'visible' }}>
                         {benefits.map((item) => (
                             <SplideSlide key={item.id}>
-                                <Link
-                                    className="block relative p-0.5 md:max-w-[24rem] border border-n-6 rounded-[2rem] group"
-                                    href="/features"
+                                <div
+                                    className="block relative p-0.5 md:max-w-[24rem] border border-n-6 rounded-[2rem]"
                                 >
                                     <div className="relative z-2 flex flex-col h-[22.625rem] p-[2.375rem] pointer-events-none">
                                         <h5 className="h5 mb-5">
@@ -64,16 +62,6 @@ const Benefits = ({}: BenefitsProps) => {
                                                 height={48}
                                                 alt={item.title}
                                             />
-                                            <div className="ml-auto font-code text-xs font-bold text-n-1 uppercase tracking-wider group-hover:text-color-1 transition-colors">
-                                                Explore more
-                                            </div>
-                                            <svg
-                                                className="ml-5 fill-n-1 group-hover:fill-color-1 transition-colors"
-                                                width="24"
-                                                height="24"
-                                            >
-                                                <path d="M8.293 5.293a1 1 0 0 1 1.414 0l6 6a1 1 0 0 1 0 1.414l-6 6a1 1 0 0 1-1.414-1.414L13.586 12 8.293 6.707a1 1 0 0 1 0-1.414z" />
-                                            </svg>
                                         </div>
                                     </div>
                                     <div
@@ -83,12 +71,12 @@ const Benefits = ({}: BenefitsProps) => {
                                         }}
                                     >
                                     </div>
-                                </Link>
+                                </div>
                             </SplideSlide>
                         ))}
                     </SplideTrack>
                 </Splide>
-                <div className="flex mt-12 -mx-2 md:mt-15 lg:justify-center xl:mt-20">
+                <div className="flex justify-center mt-12 -mx-2 md:mt-15 xl:mt-20 lg:hidden">
                     {benefits.map((item, index) => (
                         <button
                             className="relative w-6 h-6 mx-2"

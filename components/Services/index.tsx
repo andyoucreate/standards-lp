@@ -73,8 +73,7 @@ const Services = ({ containerClassName }: ServicesProps) => {
                             ref={scrollRef}
                             className="h-full overflow-hidden"
                         >
-                            <Masonry columnsCount={4} gutter="24px" style={{ display: 'flex' }} columnsCountBreakPoints={{ 350: 2, 768: 3, 1024: 4 }}>
-                                {[
+                            <Masonry columnsCount={4} gutter="24px">{[
                                     { name: "B2B", color: "bg-color-1 text-white" },
                                     { name: "B2C", color: "bg-blue-500 text-white" },
                                     { name: "Discount / Sale", color: "bg-green-500 text-white" },

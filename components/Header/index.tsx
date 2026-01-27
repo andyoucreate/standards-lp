@@ -52,7 +52,7 @@ const Header = ({}: HeaderProps) => {
                             ))}
                         </div>
                     </nav>
-                    <Button href="/login?new=true" onClick={(e: React.MouseEvent) => e.preventDefault()}>
+                    <Button href="/login?new=true" onClick={(e) => e?.preventDefault()}>
                         Sign up
                     </Button>
                 </div>

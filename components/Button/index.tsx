@@ -4,11 +4,12 @@ import { svgs } from "./svgs";
 type ButtonProps = {
     className?: string;
     href?: string;
-    onClick?: () => void;
+    onClick?: (e?: React.MouseEvent<Element>) => void;
     children: React.ReactNode;
     px?: string;
     white?: boolean;
     secondary?: boolean;
+    type?: "button" | "submit" | "reset";
 };
 
 const Button = ({
@@ -19,6 +20,7 @@ const Button = ({
     px,
     white,
     secondary,
+    type = "button",
 }: ButtonProps) => {
     const classes = `button relative inline-flex items-center justify-center h-11 ${
         px || "px-7"
@@ -41,13 +43,13 @@ const Button = ({
                 {renderSvgs}
             </a>
         ) : (
-            <Link href={href} className={classes}>
+            <Link href={href} className={classes} onClick={onClick}>
                 <span className={spanClasses}>{children}</span>
                 {renderSvgs}
             </Link>
         )
     ) : (
-        <button className={classes} onClick={onClick}>
+        <button className={classes} onClick={onClick} type={type}>
             <span className={spanClasses}>{children}</span>
             {renderSvgs}
         </button>

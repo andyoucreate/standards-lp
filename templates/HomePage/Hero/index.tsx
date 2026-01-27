@@ -30,9 +30,10 @@ const Hero = ({}: HeroProps) => {
             if (scrollContainer) {
                 scrollContainer.scrollTop += 0.5;
                 
-                const maxScroll = scrollContainer.scrollHeight / 2;
+                // Reset at half since we only have 2 copies now
+                const singleSetHeight = scrollContainer.scrollHeight / 2;
                 
-                if (scrollContainer.scrollTop >= maxScroll) {
+                if (scrollContainer.scrollTop >= singleSetHeight) {
                     scrollContainer.scrollTop = 0;
                 }
             }
@@ -83,14 +84,13 @@ const Hero = ({}: HeroProps) => {
                         </span>
                     </h1>
                     <p className="body-1 max-w-3xl mx-auto mb-6 text-n-2 lg:mb-8">
-                        Suivez automatiquement les emails, publicités et landing pages de vos concurrents. 
-                        Économisez plus de 20 heures par mois avec une inspiration marketing illimitée.
+                        A partir des emails et séquences de vos concurrents et marques préférées, générez à la volée des rapports stratégiques, mais surtout vos propres emails et séquences complètes, en un clic.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
                         <Button href="/pricing" white>
                             Commencer
                         </Button>
-                        <Button href="https://cal.com/your-calendar-link" secondary>
+                        <Button href="https://cal.com/your-calendar-link" gray>
                             Planifier une démo
                         </Button>
                     </div>
@@ -161,12 +161,12 @@ const Hero = ({}: HeroProps) => {
                                                     >
                                                         {item.name}
                                                     </div>
-                                                    <div className="overflow-hidden border border-n-1/10">
+                                                    <div className="overflow-hidden border border-n-1/10 h-[400px]">
                                                         <Image
-                                                            className="w-full h-auto object-cover block"
+                                                            className="w-full h-full object-cover object-top"
                                                             src={emailImages[index % emailImages.length]}
                                                             width={800}
-                                                            height={1600}
+                                                            height={400}
                                                             alt={item.name}
                                                         />
                                                     </div>

@@ -33,7 +33,7 @@ const Pricing = ({}: PricingProps) => {
         );
 
     return (
-        <Section className="overflow-visible">
+        <Section className="overflow-visible" id="pricing">
             <div className="container relative z-2 overflow-visible">
                 <Heading
                     tag="Commencez avec Emailoverflow"

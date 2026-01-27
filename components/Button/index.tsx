@@ -9,6 +9,7 @@ type ButtonProps = {
     px?: string;
     white?: boolean;
     secondary?: boolean;
+    gray?: boolean;
     type?: "button" | "submit" | "reset";
 };
 
@@ -20,6 +21,7 @@ const Button = ({
     px,
     white,
     secondary,
+    gray,
     type = "button",
 }: ButtonProps) => {
     const classes = `button relative inline-flex items-center justify-center h-11 ${
@@ -27,6 +29,8 @@ const Button = ({
     } ${
         secondary
             ? "text-n-1 border-2 border-n-1 bg-transparent"
+            : gray
+            ? "text-n-8 bg-n-3"
             : "text-n-8"
     } transition-colors hover:text-color-1 whitespace-nowrap ${
         className || ""
@@ -34,7 +38,7 @@ const Button = ({
 
     const spanClasses = `relative z-10`;
 
-    const renderSvgs = secondary ? null : svgs(false);
+    const renderSvgs = secondary || gray ? null : svgs(false);
 
     return href ? (
         href.startsWith("mailto:") ? (

@@ -1,81 +1,81 @@
 export const navigation = [
     {
         id: "g0",
-        title: "Getting started",
+        title: "Démarrer",
         url: "/how-to-use",
         items: [
             {
                 id: "0",
-                title: "Sign up",
+                title: "S'inscrire",
                 url: "/how-to-use",
             },
             {
                 id: "1",
-                title: "Connect with AI Chatbot",
+                title: "Se connecter avec le Chatbot IA",
                 url: "/how-to-use",
             },
             {
                 id: "2",
-                title: "Get Personalized Advices",
+                title: "Obtenir des conseils personnalisés",
                 url: "/how-to-use",
             },
             {
                 id: "3",
-                title: "Explore and engage",
+                title: "Explorer et s'engager",
                 url: "/how-to-use",
             },
         ],
     },
     {
         id: "g1",
-        title: "Pricing plans",
+        title: "Plans tarifaires",
         url: "/how-to-use",
         items: [
             {
                 id: "0",
-                title: "Sign up",
+                title: "S'inscrire",
                 url: "/how-to-use",
             },
             {
                 id: "1",
-                title: "Connect with AI Chatbot",
+                title: "Se connecter avec le Chatbot IA",
                 url: "/how-to-use",
             },
             {
                 id: "2",
-                title: "Get Personalized Advices",
+                title: "Obtenir des conseils personnalisés",
                 url: "/how-to-use",
             },
             {
                 id: "3",
-                title: "Explore and engage",
+                title: "Explorer et s'engager",
                 url: "/how-to-use",
             },
         ],
     },
     {
         id: "g2",
-        title: "Core features",
+        title: "Fonctionnalités principales",
         url: "/how-to-use",
         items: [
             {
                 id: "0",
-                title: "Sign up",
+                title: "S'inscrire",
                 url: "/how-to-use",
             },
             {
                 id: "1",
-                title: "Connect with AI Chatbot",
+                title: "Se connecter avec le Chatbot IA",
                 url: "/how-to-use",
             },
             {
                 id: "2",
-                title: "Get Personalized Advices",
+                title: "Obtenir des conseils personnalisés",
                 url: "/how-to-use",
             },
             {
                 id: "3",
-                title: "Explore and engage",
+                title: "Explorer et s'engager",
                 url: "/how-to-use",
             },
         ],
@@ -87,76 +87,76 @@ export const navigation = [
         items: [
             {
                 id: "0",
-                title: "Sign up",
+                title: "S'inscrire",
                 url: "/how-to-use",
             },
             {
                 id: "1",
-                title: "Connect with AI Chatbot",
+                title: "Se connecter avec le Chatbot IA",
                 url: "/how-to-use",
             },
             {
                 id: "2",
-                title: "Get Personalized Advices",
+                title: "Obtenir des conseils personnalisés",
                 url: "/how-to-use",
             },
             {
                 id: "3",
-                title: "Explore and engage",
+                title: "Explorer et s'engager",
                 url: "/how-to-use",
             },
         ],
     },
     {
         id: "g4",
-        title: "Enhanced features",
+        title: "Fonctionnalités avancées",
         url: "/how-to-use",
         items: [
             {
                 id: "0",
-                title: "Sign up",
+                title: "S'inscrire",
                 url: "/how-to-use",
             },
             {
                 id: "1",
-                title: "Connect with AI Chatbot",
+                title: "Se connecter avec le Chatbot IA",
                 url: "/how-to-use",
             },
             {
                 id: "2",
-                title: "Get Personalized Advices",
+                title: "Obtenir des conseils personnalisés",
                 url: "/how-to-use",
             },
             {
                 id: "3",
-                title: "Explore and engage",
+                title: "Explorer et s'engager",
                 url: "/how-to-use",
             },
         ],
     },
     {
         id: "g5",
-        title: "Help and support",
+        title: "Aide et support",
         url: "/how-to-use",
         items: [
             {
                 id: "0",
-                title: "Sign up",
+                title: "S'inscrire",
                 url: "/how-to-use",
             },
             {
                 id: "1",
-                title: "Connect with AI Chatbot",
+                title: "Se connecter avec le Chatbot IA",
                 url: "/how-to-use",
             },
             {
                 id: "2",
-                title: "Get Personalized Advices",
+                title: "Obtenir des conseils personnalisés",
                 url: "/how-to-use",
             },
             {
                 id: "3",
-                title: "Explore and engage",
+                title: "Explorer et s'engager",
                 url: "/how-to-use",
             },
         ],

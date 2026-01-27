@@ -53,8 +53,8 @@ const Roadmap = ({}: RoadmapProps) => (
                                         />
                                         <div className="tagline">
                                             {item.status === "done"
-                                                ? "Done"
-                                                : "In progress"}
+                                                ? "Terminé"
+                                                : "En cours"}
                                         </div>
                                     </div>
                                 </div>
@@ -88,7 +88,7 @@ const Roadmap = ({}: RoadmapProps) => (
                 </div>
             </div>
             <div className="flex justify-center mt-12 md:mt-15 xl:mt-20">
-                <Button href="/roadmap">Our roadmap</Button>
+                <Button href="/roadmap">Notre roadmap</Button>
             </div>
         </div>
     </Section>

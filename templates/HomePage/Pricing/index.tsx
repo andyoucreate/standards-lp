@@ -35,18 +35,9 @@ const Pricing = ({}: PricingProps) => {
     return (
         <Section className="overflow-visible">
             <div className="container relative z-2 overflow-visible">
-                <div className="hidden relative justify-center mb-[6.5rem] lg:flex">
-                    <Image
-                        className="relative z-1 h-[255px] w-auto"
-                        src="/images/figures/brands-sphere.png"
-                        width={500}
-                        height={255}
-                        alt="Sphere"
-                    />
-                </div>
                 <Heading
-                    tag="Get started with Emailoverflow"
-                    title="Pay once, use forever"
+                    tag="Commencez avec Emailoverflow"
+                    title="Payez une fois, utilisez pour toujours"
                 />
                 <div className="relative">
                     <PricingList />
@@ -74,7 +65,7 @@ const Pricing = ({}: PricingProps) => {
                         className="text-xs font-code font-bold tracking-wider uppercase border-b border-n-1 transition-colors hover:border-n-1/0"
                         onClick={() => setShowComparison(!showComparison)}
                     >
-                        {showComparison ? "Hide details" : "See the full details"}
+                        {showComparison ? "Masquer les détails" : "Voir tous les détails"}
                     </button>
                 </div>
 
@@ -82,15 +73,15 @@ const Pricing = ({}: PricingProps) => {
                     <div className="mt-16 md:mt-20 lg:mt-24">
                         <Heading
                             className="md:text-center mb-12"
-                            title="Compare plans & features"
+                            title="Comparez les plans et fonctionnalités"
                         />
                         <div className="-mx-5 px-5 overflow-auto">
                             <table className="table-fixed w-full min-w-[32rem]">
                                 <tbody>
                                     <tr className="h6">
-                                        <td className="w-[35%] py-4 pr-10">Features</td>
+                                        <td className="w-[35%] py-4 pr-10">Fonctionnalités</td>
                                         <td className="p-4 text-center text-color-2">
-                                            Basic
+                                            Basique
                                         </td>
                                         <td className="p-4 text-center text-color-1">
                                             Premium

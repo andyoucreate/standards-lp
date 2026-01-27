@@ -1,26 +1,26 @@
 export const howItWorks = [
     {
         id: "0",
-        title: "Sign up",
-        text: "Create your account in 2 minutes. Add your competitors and let our platform automatically track their marketing strategies across all channels.",
+        title: "Inscrivez-vous",
+        text: "Créez votre compte en 2 minutes. Ajoutez vos concurrents et laissez notre plateforme suivre automatiquement leurs stratégies marketing sur tous les canaux.",
         image: "/images/how-it-works/image-1.png",
     },
     {
         id: "1",
-        title: "Add competitors",
-        text: "Select the brands you want to monitor. We'll track their emails, ads, landing pages, SMS, website changes, and more in real-time.",
+        title: "Ajoutez des concurrents",
+        text: "Sélectionnez les marques que vous souhaitez surveiller. Nous suivrons leurs emails, publicités, landing pages, SMS, changements de sites web et plus encore en temps réel.",
         image: "/images/how-it-works/image-2.png",
     },
     {
         id: "2",
-        title: "Get instant insights",
-        text: "Receive automated summaries and recommendations. Our AI analyzes what your competitors are doing and suggests opportunities for your campaigns.",
+        title: "Obtenez des insights instantanés",
+        text: "Recevez des résumés et recommandations automatisés. Notre IA analyse ce que font vos concurrents et suggère des opportunités pour vos campagnes.",
         image: "/images/how-it-works/image-3.png",
     },
     {
         id: "3",
-        title: "Take action",
-        text: "Use the insights to create winning campaigns. Search our 100M+ asset library, save inspiration, and collaborate with your team.",
+        title: "Passez à l'action",
+        text: "Utilisez les insights pour créer des campagnes gagnantes. Recherchez dans notre bibliothèque de 100M+ d'assets, sauvegardez l'inspiration et collaborez avec votre équipe.",
         image: "/images/how-it-works/image-4.png",
     },
 ];

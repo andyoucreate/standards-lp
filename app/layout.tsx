@@ -17,50 +17,49 @@ const manrope = Manrope({
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "https://standards.dev"
+    process.env.NEXT_PUBLIC_SITE_URL || "https://emailoverflow.com"
   ),
   title: {
-    default: "Standards - Notion for Developers",
-    template: "%s | Standards",
+    default: "Emailoverflow - Inspiration Email Marketing Illimitée",
+    template: "%s | Emailoverflow",
   },
   description:
-    "Build type-safe business applications with developer control and user extensibility. The framework that combines Notion's flexibility with TypeScript's power.",
+    "Suivez automatiquement les emails, publicités et landing pages de vos concurrents. Accédez à plus de 100M d'assets marketing et économisez 20+ heures par mois.",
   keywords: [
-    "notion",
-    "typescript",
-    "framework",
-    "developer",
-    "business apps",
-    "crm",
-    "erp",
-    "react",
-    "nextjs",
+    "email marketing",
+    "veille concurrentielle",
+    "inspiration marketing",
+    "suivi emails",
+    "benchmarks marketing",
+    "intelligence concurrentielle",
+    "publicités",
+    "landing pages",
   ],
-  authors: [{ name: "AndYouCreate" }],
-  creator: "AndYouCreate",
-  publisher: "AndYouCreate",
+  authors: [{ name: "Emailoverflow" }],
+  creator: "Emailoverflow",
+  publisher: "Emailoverflow",
   openGraph: {
     type: "website",
-    locale: "en_US",
-    siteName: "Standards",
-    title: "Standards - Notion for Developers",
+    locale: "fr_FR",
+    siteName: "Emailoverflow",
+    title: "Emailoverflow - Inspiration Email Marketing Illimitée",
     description:
-      "Build type-safe business applications with developer control and user extensibility.",
+      "Suivez automatiquement les emails, publicités et landing pages de vos concurrents. Économisez 20+ heures par mois.",
     images: [
       {
-        url: "/og-image.png",
+        url: "/fb-og-image.png",
         width: 1200,
         height: 630,
-        alt: "Standards - Notion for Developers",
+        alt: "Emailoverflow - Inspiration Email Marketing",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Standards - Notion for Developers",
+    title: "Emailoverflow - Inspiration Email Marketing Illimitée",
     description:
-      "Build type-safe business applications with developer control and user extensibility.",
-    creator: "@andyoucreate",
+      "Suivez automatiquement les emails, publicités et landing pages de vos concurrents. Économisez 20+ heures par mois.",
+    creator: "@emailoverflow",
     images: ["/twitter-card.png"],
   },
   robots: {
@@ -89,7 +88,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="fr" suppressHydrationWarning>
       <body
         className={`${manrope.variable} font-sans bg-n-8 text-n-1 text-base antialiased`}
       >

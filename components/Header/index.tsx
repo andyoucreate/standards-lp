@@ -53,7 +53,7 @@ const Header = ({}: HeaderProps) => {
                         </div>
                     </nav>
                     <Button href="/login?new=true" onClick={(e) => e?.preventDefault()}>
-                        Sign up
+                        S'inscrire
                     </Button>
                 </div>
             </div>

@@ -44,10 +44,10 @@ const Logos = ({ className }: LogosProps) => (
             </li>
             <li className="flex items-center justify-center flex-1 h-[8.5rem]">
                 <Image
-                    src="/images/brands/Netflix.svg"
+                    src="/images/brands/Decathlon.svg"
                     width={80}
                     height={80}
-                    alt="Netflix"
+                    alt="Decathlon"
                 />
             </li>
         </ul>

@@ -1,19 +1,19 @@
 const text =
-    "Monitor marketing strategies from the world's best brands. Get insights on emails, ads, landing pages, and more in real-time.";
+    "Surveillez les stratégies marketing des meilleures marques mondiales. Obtenez des insights sur les emails, publicités, landing pages et plus encore en temps réel.";
 
 const content = [
     {
         id: "0",
-        title: "Automatic Tracking",
+        title: "Suivi automatique",
         text: text,
     },
     {
         id: "1",
-        title: "Real-Time Updates",
+        title: "Mises à jour en temps réel",
     },
     {
         id: "2",
-        title: "Global Coverage",
+        title: "Couverture mondiale",
     },
 ];
 

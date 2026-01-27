@@ -79,7 +79,7 @@ const PricingList = ({ monthly = true }: PricingListProps) => {
                                 }
                                 white={!!item.price}
                             >
-                                {item.price ? "Get started" : "Contact us"}
+                                {item.price ? "Commencer" : "Nous contacter"}
                             </Button>
                             <ul>
                                 {item.features.map((feature, index) => (
@@ -147,7 +147,7 @@ const PricingList = ({ monthly = true }: PricingListProps) => {
                             }
                             white={!!item.price}
                         >
-                            {item.price ? "Get started" : "Contact us"}
+                            {item.price ? "Commencer" : "Nous contacter"}
                         </Button>
                         <ul>
                             {item.features.map((feature, featureIndex) => (

@@ -18,8 +18,8 @@ const Testimonials = ({}: TestimonialsProps) => {
     <Section>
         <div className="container relative z-2" style={{ overflow: 'visible' }}>
             <Heading
-                tag="Ready to get started"
-                title="What the community is saying"
+                tag="Prêt à commencer"
+                title="Ce que dit la communauté"
             />
             <Splide
                 className="splide-custom splide-visible"

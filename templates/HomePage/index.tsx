@@ -18,7 +18,6 @@ const HomePage = () => {
             <Benefits />
             <Collaboration />
             <HowItWorks />
-            <Services />
             <Pricing />
             <Community />
             <Faq />

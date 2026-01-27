@@ -1,5 +1,8 @@
+"use client";
+
 import { useEffect, useRef, useState } from "react";
 import { MouseParallax, ScrollParallax } from "react-just-parallax";
+import Masonry from "react-responsive-masonry";
 import Section from "@/components/Section";
 import Button from "@/components/Button";
 import Image from "@/components/Image";
@@ -11,12 +14,57 @@ type HeroProps = {};
 
 const Hero = ({}: HeroProps) => {
     const [mounted, setMounted] = useState<boolean>(false);
+    const scrollRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         setMounted(true);
     }, []);
 
+    useEffect(() => {
+        const scrollContainer = scrollRef.current;
+        if (!scrollContainer) return;
+
+        let animationFrameId: number;
+
+        const scroll = () => {
+            if (scrollContainer) {
+                scrollContainer.scrollTop += 0.5;
+                
+                const maxScroll = scrollContainer.scrollHeight / 2;
+                
+                if (scrollContainer.scrollTop >= maxScroll) {
+                    scrollContainer.scrollTop = 0;
+                }
+            }
+            animationFrameId = requestAnimationFrame(scroll);
+        };
+
+        animationFrameId = requestAnimationFrame(scroll);
+
+        return () => {
+            cancelAnimationFrame(animationFrameId);
+        };
+    }, []);
+
     const parallaxRef = useRef<any>(null);
+
+    const emailImages = [
+        "/images/services/email-1.png",
+        "/images/services/email-2.png",
+        "/images/services/email-3.png",
+        "/images/services/email-4.png",
+        "/images/services/email-5.png",
+        "/images/services/email-6.png",
+        "/images/services/email-7.png",
+        "/images/services/email-8.png",
+        "/images/services/extra-low-abv-valpolicella-closes-tonight.webp",
+        "/images/services/make-this-your-yearsave-20-on-carecom.webp",
+        "/images/services/new-cookies-cream.webp",
+        "/images/services/new-release-colombia-juan-and-rogelio.webp",
+        "/images/services/travel-rewards-that-fit-right-into-your-pocket.webp",
+        "/images/services/we-caught-you-peeping.webp",
+        "/images/services/you-could-be-winning-more-customers-right-now.webp",
+    ];
 
     return (
         <Section
@@ -28,22 +76,22 @@ const Hero = ({}: HeroProps) => {
             <div className="container relative" ref={parallaxRef}>
                 <div className="relative z-1 max-w-[62rem] mx-auto mb-[3.875rem] text-center md:mb-20 lg:mb-[6.25rem]">
                     <h1 className="h1 mb-6">
-                        Discover real-world
+                        Découvrez l'inspiration
                         <br />
                         <span className="inline-block relative">
-                            email inspiration
+                            email réelle
                         </span>
                     </h1>
                     <p className="body-1 max-w-3xl mx-auto mb-6 text-n-2 lg:mb-8">
-                        Track your competitors' emails, ads, and landing pages automatically. 
-                        Save 20+ hours per month with unlimited marketing inspiration.
+                        Suivez automatiquement les emails, publicités et landing pages de vos concurrents. 
+                        Économisez plus de 20 heures par mois avec une inspiration marketing illimitée.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
                         <Button href="/pricing" white>
-                            Get started
+                            Commencer
                         </Button>
                         <Button href="https://cal.com/your-calendar-link" secondary>
-                            Schedule a demo
+                            Planifier une démo
                         </Button>
                     </div>
                     <div className="mt-12 flex justify-center gap-16 flex-wrap lg:gap-24">
@@ -66,21 +114,71 @@ const Hero = ({}: HeroProps) => {
                     </div>
                 </div>
                 <div className="relative max-w-[23.25rem] mx-auto md:max-w-5xl lg:max-w-7xl xl:max-w-[90rem] xl:mb-24">
-                    <div className="relative z-1 p-0.5 rounded-2xl bg-conic-gradient">
+                    <div className="relative z-1 border border-n-6 rounded-2xl">
                         <div className="relative bg-n-8 rounded-[0.875rem]">
-                            <div className="h-[1.375rem] bg-[#43435C] rounded-t-[0.875rem]"></div>
-                            <div className="aspect-[33/40] rounded-b-[0.875rem] overflow-hidden md:aspect-[688/490] lg:aspect-[1024/490]">
+                            {/* Explorer UI Screenshot - Fixed at top */}
+                            <div className="sticky top-0 z-20 bg-n-8 rounded-t-[0.875rem] overflow-hidden">
                                 <Image
-                                    className="w-full scale-[1.7] translate-y-[8%] md:scale-[1] md:-translate-y-[10.5%] lg:-translate-y-[23.5%]"
-                                    src="/images/hero/robot.jpg"
-                                    width={1024}
-                                    height={490}
-                                    alt="AI"
+                                    className="w-full h-auto"
+                                    src="/images/explorer-ui.png"
+                                    width={1440}
+                                    height={240}
+                                    alt="Explorer Interface"
                                 />
                             </div>
-                            <Generating className="absolute left-4 right-4 bottom-5 md:left-1/2 md:right-auto md:bottom-8 md:w-[30.5rem] md:-translate-x-1/2" />
+                            
+                            <div className="overflow-hidden h-[490px]">
+                                <div className="relative w-full h-full">
+                                    <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-n-8 to-transparent z-10 pointer-events-none"></div>
+                                    <div 
+                                        ref={scrollRef}
+                                        className="h-full overflow-hidden"
+                                    >
+                                        <Masonry columnsCount={4} gutter="24px">{[
+                                                { name: "B2B", color: "bg-color-1 text-white" },
+                                                { name: "B2C", color: "bg-blue-500 text-white" },
+                                                { name: "Discount / Sale", color: "bg-green-500 text-white" },
+                                                { name: "Apology / error", color: "bg-pink-500 text-white" },
+                                                { name: "Newsletter", color: "bg-purple-500 text-white" },
+                                                { name: "Event Invitation", color: "bg-cyan-500 text-white" },
+                                                { name: "Password Reset", color: "bg-color-1 text-white" },
+                                                { name: "Transactional", color: "bg-orange-500 text-white" },
+                                                { name: "Referral", color: "bg-red-500 text-white" },
+                                            ].concat([
+                                                { name: "B2B", color: "bg-color-1 text-white" },
+                                                { name: "B2C", color: "bg-blue-500 text-white" },
+                                                { name: "Discount / Sale", color: "bg-green-500 text-white" },
+                                                { name: "Apology / error", color: "bg-pink-500 text-white" },
+                                                { name: "Newsletter", color: "bg-purple-500 text-white" },
+                                                { name: "Event Invitation", color: "bg-cyan-500 text-white" },
+                                                { name: "Password Reset", color: "bg-color-1 text-white" },
+                                                { name: "Transactional", color: "bg-orange-500 text-white" },
+                                                { name: "Referral", color: "bg-red-500 text-white" },
+                                            ]).map((item, index) => (
+                                                <div key={index} className="relative w-full" style={{ marginBottom: '12px' }}>
+                                                    <div
+                                                        className={`px-4 py-3 ${item.color} text-sm font-code font-bold text-center`}
+                                                    >
+                                                        {item.name}
+                                                    </div>
+                                                    <div className="overflow-hidden border border-n-1/10">
+                                                        <Image
+                                                            className="w-full h-auto object-cover block"
+                                                            src={emailImages[index % emailImages.length]}
+                                                            width={800}
+                                                            height={1600}
+                                                            alt={item.name}
+                                                        />
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </Masonry>
+                                    </div>
+                                    <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-n-8 to-transparent z-10 pointer-events-none"></div>
+                                </div>
+                            </div>
                             <ScrollParallax isAbsolutelyPositioned>
-                                <ul className="hidden absolute -left-[5.5rem] bottom-[7.625rem] px-1 py-1 bg-[#474060]/40 backdrop-blur border border-n-1/10 rounded-2xl xl:flex">
+                                <ul className="hidden absolute -left-[5.5rem] bottom-[7.625rem] px-1 py-1 bg-n-1/60 backdrop-blur border border-n-1/10 rounded-2xl xl:flex shadow-xl">
                                     {[
                                         "/images/icons/home-smile.svg",
                                         "/images/icons/file-02.svg",
@@ -101,7 +199,7 @@ const Hero = ({}: HeroProps) => {
                             <ScrollParallax isAbsolutelyPositioned>
                                 <Notification
                                     className="hidden absolute -right-[5.5rem] bottom-[11.25rem] w-[18.375rem] xl:flex"
-                                    title="Code generation"
+                                    title="3 new workflows"
                                 />
                             </ScrollParallax>
                         </div>

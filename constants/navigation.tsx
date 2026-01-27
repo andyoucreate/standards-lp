@@ -6,23 +6,23 @@ export const navigation = [
     },
     {
         id: "1",
-        title: "Login",
+        title: "Connexion",
         url: "/login",
     },
     {
         id: "2",
-        title: "Sign up",
+        title: "S'inscrire",
         url: "/login?new=true",
     },
     {
         id: "3",
-        title: "Sign in",
+        title: "Se connecter",
         url: "/login",
         onlyMobile: true,
     },
     {
         id: "4",
-        title: "Terms & Conditions",
+        title: "Conditions d'utilisation",
         url: "/terms",
         footerOnly: true,
     },

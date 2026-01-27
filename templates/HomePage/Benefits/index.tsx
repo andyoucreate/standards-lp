@@ -23,7 +23,7 @@ const Benefits = ({}: BenefitsProps) => {
             <div className="container relative z-2" style={{ overflow: 'visible' }}>
                 <Heading
                     className="md:max-w-md lg:max-w-2xl"
-                    title="Find Marketing Inspiration Instantly with Emailoverflow"
+                    title="Trouvez l'inspiration marketing instantanément avec Emailoverflow"
                 />
                 <Splide
                     className="splide-visible max-w-[24rem] md:max-w-none overflow-visible"

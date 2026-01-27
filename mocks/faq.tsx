@@ -1,27 +1,27 @@
 export const faq = [
     {
         id: "0",
-        title: "What is Emailoverflow?",
-        text: "Emailoverflow is a competitive intelligence platform that automatically tracks your competitors' marketing strategies. Monitor emails, ads, landing pages, SMS, website changes, and more from 80k+ brands across 100+ industries. Get instant access to 100M+ marketing assets and real-time insights to outperform your competition.",
+        title: "Qu'est-ce qu'Emailoverflow ?",
+        text: "Emailoverflow est une plateforme d'intelligence concurrentielle qui suit automatiquement les stratégies marketing de vos concurrents. Surveillez les emails, publicités, landing pages, SMS, changements de sites web et plus encore de 80 000+ marques dans 100+ industries. Accédez instantanément à plus de 100M d'assets marketing et à des insights en temps réel pour surpasser votre concurrence.",
     },
     {
         id: "1",
-        title: "How does Emailoverflow work?",
-        text: "Simply sign up and add the competitors you want to track. Emailoverflow automatically monitors their marketing activities 24/7 across all channels. You'll receive real-time alerts, automated summaries, and AI-powered recommendations. Access our advanced search engine to find inspiration instantly from our vast library of emails, ads, and landing pages.",
+        title: "Comment fonctionne Emailoverflow ?",
+        text: "Il suffit de vous inscrire et d'ajouter les concurrents que vous souhaitez suivre. Emailoverflow surveille automatiquement leurs activités marketing 24h/24 et 7j/7 sur tous les canaux. Vous recevrez des alertes en temps réel, des résumés automatisés et des recommandations alimentées par l'IA. Accédez à notre moteur de recherche avancé pour trouver de l'inspiration instantanément dans notre vaste bibliothèque d'emails, publicités et landing pages.",
     },
     {
         id: "2",
-        title: "What can I track with Emailoverflow?",
-        text: "You can track emails & newsletters, email flows & automations, Meta/TikTok/YouTube/LinkedIn ads, landing pages, SMS campaigns, website changes, social media posts, SEO strategy, pricing changes, product launches, and more. We cover all major marketing channels and provide historical data so you never miss a competitive update.",
+        title: "Que puis-je suivre avec Emailoverflow ?",
+        text: "Vous pouvez suivre les emails et newsletters, les flux et automatisations d'emails, les publicités Meta/TikTok/YouTube/LinkedIn, les landing pages, les campagnes SMS, les changements de sites web, les posts sur les réseaux sociaux, la stratégie SEO, les changements de prix, les lancements de produits, et plus encore. Nous couvrons tous les principaux canaux marketing et fournissons des données historiques pour ne jamais manquer une mise à jour concurrentielle.",
     },
     {
         id: "3",
-        title: "How much does Emailoverflow cost?",
-        text: "We offer flexible pricing plans starting from our free tier to enterprise solutions. Our paid plans start at $199/month and include unlimited competitor tracking, full access to our 100M+ asset library, real-time benchmarks, AI insights, and team collaboration tools. Check our pricing page for detailed plan comparisons and features.",
+        title: "Combien coûte Emailoverflow ?",
+        text: "Nous proposons des plans tarifaires flexibles allant de notre offre gratuite aux solutions entreprise. Nos plans payants commencent à 199€/mois et incluent le suivi illimité de concurrents, l'accès complet à notre bibliothèque de 100M+ assets, les benchmarks en temps réel, les insights IA et les outils de collaboration d'équipe. Consultez notre page tarifs pour des comparaisons détaillées des plans et fonctionnalités.",
     },
     {
         id: "4",
-        title: "How can I get started with Emailoverflow?",
-        text: "Getting started is easy and takes just 2 minutes. Sign up for free, add your competitors, and our platform starts tracking automatically. No credit card required for the free trial. You can schedule a demo with our team if you'd like a personalized walkthrough of the platform and its features.",
+        title: "Comment puis-je commencer avec Emailoverflow ?",
+        text: "Commencer est facile et ne prend que 2 minutes. Inscrivez-vous gratuitement, ajoutez vos concurrents, et notre plateforme commence à suivre automatiquement. Aucune carte de crédit requise pour l'essai gratuit. Vous pouvez programmer une démo avec notre équipe si vous souhaitez une présentation personnalisée de la plateforme et de ses fonctionnalités.",
     },
 ];

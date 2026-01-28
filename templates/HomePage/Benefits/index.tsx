@@ -76,7 +76,7 @@ const Benefits = ({}: BenefitsProps) => {
                         ))}
                     </SplideTrack>
                 </Splide>
-                <div className="flex justify-center mt-12 -mx-2 md:mt-15 xl:mt-20 lg:hidden">
+                <div className="flex justify-center mt-12 -mx-2 md:mt-15 xl:mt-20">
                     {benefits.map((item, index) => (
                         <button
                             className="relative w-6 h-6 mx-2"

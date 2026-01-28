@@ -11,15 +11,6 @@ const Notification = ({ className, title }: NotificationProps) => (
             className || ""
         }`}
     >
-        <div className="mr-5">
-            <Image
-                className="w-full rounded-xl"
-                src="/images/notification/image-1.png"
-                width={52}
-                height={52}
-                alt="Image"
-            />
-        </div>
         <div className="flex-1">
             <h6 className="mb-1 font-semibold text-base text-n-8">{title}</h6>
             <div className="flex items-center justify-between">
@@ -30,7 +21,7 @@ const Notification = ({ className, title }: NotificationProps) => (
                         { src: "/images/brands/Glossier.svg", name: "Glossier" },
                     ].map((item, index) => (
                         <li
-                            className={`flex w-6 h-6 bg-white border-2 border-n-1 rounded-full overflow-hidden items-center justify-center ${
+                            className={`flex w-6 h-6 bg-white rounded-full overflow-hidden items-center justify-center ${
                                 index !== 0 ? "-ml-2" : ""
                             }`}
                             key={index}

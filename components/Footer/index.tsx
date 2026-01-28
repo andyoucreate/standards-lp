@@ -51,6 +51,17 @@ const Footer = ({}: FooterProps) => {
                     <div className="hidden caption text-n-4 lg:block">
                         © {new Date().getFullYear()} Emailoverflow
                     </div>
+                    <div className="hidden caption text-n-4 lg:block">
+                        Standardisé par{" "}
+                        <a 
+                            href="https://www.andyoucreate.com" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="hover:text-n-1 transition-colors"
+                        >
+                            &YC
+                        </a>
+                    </div>
                 </div>
             </Section>
             <ContactModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />

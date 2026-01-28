@@ -1,8 +1,8 @@
-import type { NextPage } from "next";
 import LoginPage from "@/templates/LoginPage";
+import type { NextPage } from "next";
 
 const Login: NextPage = () => {
-    return <LoginPage />;
+  return <LoginPage />;
 };
 
 export default Login;

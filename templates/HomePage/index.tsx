@@ -1,29 +1,29 @@
 "use client";
 
+import Join from "@/components/Join";
 import Layout from "@/components/Layout";
-import Hero from "./Hero";
+import Services from "@/components/Services";
+import Community from "@/templates/PricingPage/Community";
+import Faq from "@/templates/PricingPage/Faq";
 import Benefits from "./Benefits";
 import Collaboration from "./Collaboration";
+import Hero from "./Hero";
 import HowItWorks from "./HowItWorks";
 import Pricing from "./Pricing";
-import Community from "@/templates/PricingPage/Community";
-import Services from "@/components/Services";
-import Faq from "@/templates/PricingPage/Faq";
-import Join from "@/components/Join";
 
 const HomePage = () => {
-    return (
-        <Layout>
-            <Hero />
-            <Benefits />
-            <Collaboration />
-            <HowItWorks />
-            <Pricing />
-            <Community />
-            <Faq />
-            <Join />
-        </Layout>
-    );
+  return (
+    <Layout>
+      <Hero />
+      <Benefits />
+      <Collaboration />
+      <HowItWorks />
+      <Pricing />
+      <Community />
+      <Faq />
+      <Join />
+    </Layout>
+  );
 };
 
 export default HomePage;

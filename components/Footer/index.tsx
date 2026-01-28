@@ -57,7 +57,7 @@ const Footer = ({}: FooterProps) => {
                             href="https://www.andyoucreate.com" 
                             target="_blank" 
                             rel="noopener noreferrer"
-                            className="hover:text-n-1 transition-colors"
+                            className="font-bold text-color-1 hover:text-n-1 transition-colors"
                         >
                             &YC
                         </a>

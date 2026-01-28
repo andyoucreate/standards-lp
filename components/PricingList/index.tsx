@@ -1,8 +1,9 @@
+"use client";
+
 import PricingCard from "@/components/PricingCard";
+import { usePricing } from "@/hooks/useTranslatedContent";
 import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
 import { memo, useCallback, useRef, useState } from "react";
-
-import { pricing } from "@/mocks/pricing";
 
 type PricingListProps = {
   monthly?: boolean;
@@ -10,6 +11,7 @@ type PricingListProps = {
 
 const PricingList = memo(function PricingList({ monthly = true }: PricingListProps) {
   const [activeIndex, setActiveIndex] = useState<number>(0);
+  const pricing = usePricing();
 
   // Splide doesn't export a proper ref type
   // biome-ignore lint/suspicious/noExplicitAny: Splide ref type not available
@@ -51,7 +53,7 @@ const PricingList = memo(function PricingList({ monthly = true }: PricingListPro
           ))}
         </SplideTrack>
       </Splide>
-      <div className="hidden lg:grid lg:grid-cols-3 lg:gap-4">
+      <div className="hidden lg:grid lg:grid-cols-2 lg:gap-6 lg:max-w-5xl lg:mx-auto">
         {pricing.map((item, index) => (
           <PricingCard
             key={item.id}

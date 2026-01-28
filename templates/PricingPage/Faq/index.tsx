@@ -1,12 +1,16 @@
+"use client";
+
 import Heading from "@/components/Heading";
 import Section from "@/components/Section";
+import { useFaq } from "@/hooks/useTranslatedContent";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
-
-import { faq } from "@/mocks/faq";
 
 type FaqProps = {};
 
 const Faq = ({}: FaqProps) => {
+  const faq = useFaq();
+  const t = useTranslations("faq");
   const [activeId, setActiveId] = useState<string | null>(faq[0].id);
 
   return (

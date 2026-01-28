@@ -1,5 +1,5 @@
-export const svgs = (white: boolean | undefined) => {
-  const fillColor = white ? "#FFFFFF" : "#0E0C15";
+export const svgs = (white: boolean | undefined, lightGray: boolean | undefined) => {
+  const fillColor = white ? "#FFFFFF" : lightGray ? "#D1D5DB" : "#0E0C15";
 
   return (
     <>

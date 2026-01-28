@@ -37,20 +37,22 @@ const PricingCard = memo(function PricingCard({
         <h4 className="h4 mb-4 text-n-1">{title}</h4>
         <p className="body-2 min-h-[4rem] mb-3 text-n-1/50">{description}</p>
         <div className="flex items-center h-[5.5rem] mb-6">
-          {displayPrice && (
+          {displayPrice !== null && displayPrice !== "0" && (
             <>
-              <div className="h3">$</div>
               <div className="text-[5.5rem] leading-none font-bold">{displayPrice}</div>
-              <div className="h6 ml-2 text-n-1/50">/mois</div>
+              <div className="h6 ml-2 text-n-1/50">€/mois</div>
             </>
+          )}
+          {displayPrice === "0" && (
+            <div className="text-[5.5rem] leading-none font-bold">Gratuit</div>
           )}
         </div>
         <Button
           className="w-full mb-6"
-          href={price ? "/pricing" : "mailto:info@ui8.net"}
-          white={!!price}
+          href={price && price !== "0" ? "/pricing" : "/signup"}
+          white={!!(price && price !== "0")}
         >
-          {price ? "Commencer" : "Nous contacter"}
+          {price && price !== "0" ? "Commencer" : "S'inscrire gratuitement"}
         </Button>
         <ul>
           {features.map((feature, index) => (

@@ -27,9 +27,9 @@ const Section = ({
     {crosses && (
       <>
         <div
-          className={`hidden absolute top-0 left-7.5 right-7.5 h-0.25 bg-stroke-1 opacity-50 ${
+          className={`hidden absolute top-0 left-0 right-0 h-0.25 bg-stroke-1 opacity-50 ${
             crossesOffset && crossesOffset
-          } pointer-events-none lg:block xl:left-10 right-10`}
+          } pointer-events-none lg:block`}
         ></div>
       </>
     )}

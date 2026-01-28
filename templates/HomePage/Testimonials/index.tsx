@@ -1,23 +1,26 @@
-import Button from "@/components/Button";
-import Image from "@/components/Image";
-import Section from "@/components/Section";
-import Tagline from "@/components/Tagline";
-import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
-import { useRef } from "react";
+"use client";
 
 import Arrows from "@/components/Arrows";
+import Button from "@/components/Button";
 import Heading from "@/components/Heading";
-import { testimonials } from "@/mocks/testimonials";
+import Image from "@/components/Image";
+import Section from "@/components/Section";
+import { useTestimonials } from "@/hooks/useTranslatedContent";
+import { useTranslations } from "next-intl";
+import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
+import { useRef } from "react";
 
 type TestimonialsProps = {};
 
 const Testimonials = ({}: TestimonialsProps) => {
   const ref = useRef<any>(null);
+  const t = useTranslations("testimonials");
+  const testimonials = useTestimonials();
 
   return (
     <Section>
       <div className="container relative z-2" style={{ overflow: "visible" }}>
-        <Heading tag="Prêt à commencer" title="Ce que dit la communauté" />
+        <Heading tag={t("tag")} title={t("title")} />
         <Splide
           className="splide-custom splide-visible"
           options={{
@@ -68,7 +71,7 @@ const Testimonials = ({}: TestimonialsProps) => {
                   <div className="relative flex z-1 bg-conic-gradient p-0.25 rounded-2xl md:ml-auto">
                     <div className="flex flex-col items-start p-8 bg-n-8 rounded-[0.9375rem] md:w-[21.75rem]">
                       <p className="quote mb-8">{item.text}</p>
-                      <Button className="mt-auto">Visit link</Button>
+                      <Button className="mt-auto">{t("cta")}</Button>
                     </div>
                   </div>
                 </div>

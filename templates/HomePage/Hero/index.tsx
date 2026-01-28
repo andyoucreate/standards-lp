@@ -6,15 +6,84 @@ import Image from "@/components/Image";
 import Logos from "@/components/Logos";
 import Notification from "@/components/Notification";
 import Section from "@/components/Section";
+import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import { MouseParallax, ScrollParallax } from "react-just-parallax";
 import Masonry from "react-responsive-masonry";
 
 type HeroProps = {};
 
+// Counter animation hook with steep rise and soft landing
+function useCountUp(end: number, duration: number = 2000, startCounting: boolean = false) {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!startCounting) return;
+    
+    let startTime: number | null = null;
+    let animationFrame: number;
+
+    const animate = (currentTime: number) => {
+      if (!startTime) startTime = currentTime;
+      const progress = Math.min((currentTime - startTime) / duration, 1);
+      
+      // Custom easing: fast rise (70% of value in first 30% of time)
+      // then soft landing for the remaining 70% of time
+      let easedProgress;
+      if (progress < 0.3) {
+        // Fast rise: reach 70% of value quickly
+        easedProgress = (progress / 0.3) * 0.7;
+      } else {
+        // Soft landing: remaining 30% over 70% of time with gentle deceleration
+        const remainingProgress = (progress - 0.3) / 0.7;
+        const softDecel = 1 - Math.pow(1 - remainingProgress, 3);
+        easedProgress = 0.7 + (softDecel * 0.3);
+      }
+      
+      setCount(Math.floor(end * easedProgress));
+
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(animate);
+      } else {
+        setCount(end);
+      }
+    };
+
+    animationFrame = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animationFrame);
+  }, [end, duration, startCounting]);
+
+  return count;
+}
+
 const Hero = ({}: HeroProps) => {
   const [mounted, setMounted] = useState<boolean>(false);
+  const [activeTab, setActiveTab] = useState<string>("data");
   const scrollRef = useRef<HTMLDivElement>(null);
+  const t = useTranslations("hero");
+
+  // Calculate emails count: 5000 emails per day
+  // 1 day = 86,400 seconds / 5000 emails = 17.28 seconds per email
+  const calculateEmailsCount = () => {
+    const startDate = new Date("2026-01-28T00:00:00");
+    const now = new Date();
+    
+    // Calculate total seconds elapsed
+    const secondsElapsed = (now.getTime() - startDate.getTime()) / 1000;
+    
+    // One email every 17.28 seconds (86400 seconds / 5000 emails)
+    const secondsPerEmail = 86400 / 5000;
+    const emailsToAdd = Math.floor(secondsElapsed / secondsPerEmail);
+    
+    return 2119931 + emailsToAdd;
+  };
+
+  const targetEmailsCount = calculateEmailsCount();
+
+  // Counter values - longer durations to give time for soft landing
+  const emailsCount = useCountUp(targetEmailsCount, 5000, mounted);
+  const brandsCount = useCountUp(850, 4500, mounted);
+  const industriesCount = useCountUp(50, 4000, mounted);
 
   useEffect(() => {
     setMounted(true);
@@ -70,76 +139,96 @@ const Hero = ({}: HeroProps) => {
   return (
     <Section
       className="-mt-[6.25rem] pt-[8.25rem] pb-4 overflow-hidden md:pt-[9.75rem] md:pb-[4.8rem] lg:-mt-[6.75rem] lg:-mb-40 lg:pt-[12.25rem] lg:pb-[13.8rem]"
-      crosses
-      crossesOffset="lg:translate-y-[6.75rem]"
       customPaddings
     >
       <div className="container relative" ref={parallaxRef}>
         <div className="relative z-1 max-w-[62rem] mx-auto mb-[3.875rem] text-center md:mb-20 lg:mb-[6.25rem]">
-          <h1 className="h1 mb-6">Ta meilleure campagne email en 2min</h1>
+          <h1 className="h1 mb-6">{t("title")}</h1>
           <p className="body-1 max-w-3xl mx-auto mb-6 text-n-2 lg:mb-8">
-            A partir des emails et séquences de vos concurrents et marques préférées, générez à la
-            volée des rapports stratégiques, mais surtout vos propres emails et séquences complètes,
-            en un clic.
+            {t("description")}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
             <Button href="/pricing" white>
-              Commencer
+              {t("cta_start")}
             </Button>
-            <Button href="https://cal.com/your-calendar-link" white>
-              Planifier une démo
+            <Button href="https://cal.com/your-calendar-link" lightGray>
+              {t("cta_demo")}
             </Button>
           </div>
           <div className="mt-12 flex justify-center gap-16 flex-wrap lg:gap-24">
             <div className="text-center">
-              <div className="text-sm text-n-3 mb-3">Emails indexés</div>
-              <div className="text-5xl font-bold text-n-1">4.8M+</div>
+              <div className="text-sm text-n-3 mb-3">{t("stats.emails")}</div>
+              <div className="text-5xl font-bold text-n-1">
+                {mounted ? emailsCount.toLocaleString() : "2,119,931"}
+              </div>
             </div>
             <div className="text-center">
-              <div className="text-sm text-n-3 mb-3">Marques suivies</div>
-              <div className="text-5xl font-bold text-n-1">850+</div>
+              <div className="text-sm text-n-3 mb-3">{t("stats.brands")}</div>
+              <div className="text-5xl font-bold text-n-1">
+                {mounted ? `${brandsCount}+` : "850+"}
+              </div>
             </div>
             <div className="text-center">
-              <div className="text-sm text-n-3 mb-3">Veille automatique</div>
+              <div className="text-sm text-n-3 mb-3">{t("stats.tracking")}</div>
               <div className="text-5xl font-bold text-n-1">24/7</div>
             </div>
             <div className="text-center">
-              <div className="text-sm text-n-3 mb-3">Industries</div>
-              <div className="text-5xl font-bold text-n-1">50+</div>
+              <div className="text-sm text-n-3 mb-3">{t("stats.industries")}</div>
+              <div className="text-5xl font-bold text-n-1">
+                {mounted ? `${industriesCount}+` : "50+"}
+              </div>
             </div>
           </div>
         </div>
+
+        {/* Tabs Navigation - Attio Style - Full Width */}
+        <div className="flex justify-center mb-6 md:mb-8">
+          <div className="flex items-center gap-1 p-1 bg-n-7/30 backdrop-blur-sm rounded-xl border border-n-6/50 w-full max-w-2xl">
+            {[
+              { id: "data", label: "Data" },
+              { id: "workflows", label: "Workflows" },
+              { id: "reporting", label: "Reporting" },
+              { id: "pipeline", label: "Pipeline" },
+            ].map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`flex-1 px-5 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 ${
+                  activeTab === tab.id
+                    ? "bg-n-8 text-n-1 shadow-lg"
+                    : "text-n-3 hover:text-n-1"
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
         <div className="relative max-w-[23.25rem] mx-auto md:max-w-5xl lg:max-w-7xl xl:max-w-[90rem] xl:mb-24">
           <div className="relative z-1 border border-n-6 rounded-2xl">
             <div className="relative bg-n-8 rounded-[0.875rem]">
-              {/* Explorer UI Screenshot - Fixed at top */}
-              <div className="sticky top-0 z-20 bg-n-8 rounded-t-[0.875rem] overflow-hidden">
-                <Image
-                  className="w-full h-auto"
-                  src="/images/explorer-ui.png"
-                  width={1440}
-                  height={240}
-                  alt="Explorer Interface"
-                />
-              </div>
+              {/* Explorer UI Screenshot - Fixed at top - Only for Data tab */}
+              {activeTab === "data" && (
+                <div className="sticky top-0 z-20 bg-n-8 rounded-t-[0.875rem] overflow-hidden">
+                  <Image
+                    className="w-full h-auto"
+                    src="/images/explorer-ui.png"
+                    width={1440}
+                    height={240}
+                    alt="Explorer Interface"
+                  />
+                </div>
+              )}
 
-              <div className="overflow-hidden h-[490px]">
-                <div className="relative w-full h-full">
-                  <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-n-8 to-transparent z-10 pointer-events-none"></div>
-                  <div ref={scrollRef} className="h-full overflow-hidden">
-                    <Masonry columnsCount={4} gutter="24px">
-                      {[
-                        { name: "B2B", color: "bg-color-1 text-white" },
-                        { name: "B2C", color: "bg-blue-500 text-white" },
-                        { name: "Discount / Sale", color: "bg-green-500 text-white" },
-                        { name: "Apology / error", color: "bg-pink-500 text-white" },
-                        { name: "Newsletter", color: "bg-purple-500 text-white" },
-                        { name: "Event Invitation", color: "bg-cyan-500 text-white" },
-                        { name: "Password Reset", color: "bg-color-1 text-white" },
-                        { name: "Transactional", color: "bg-orange-500 text-white" },
-                        { name: "Referral", color: "bg-red-500 text-white" },
-                      ]
-                        .concat([
+              {/* Data Tab Content */}
+              {activeTab === "data" && (
+                <div className="overflow-hidden h-[490px]">
+                  <div className="relative w-full h-full">
+                    <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-n-8 to-transparent z-10 pointer-events-none"></div>
+                    <div ref={scrollRef} className="h-full overflow-hidden">
+                      <Masonry columnsCount={4} gutter="24px">
+                        {[
                           { name: "B2B", color: "bg-color-1 text-white" },
                           { name: "B2C", color: "bg-blue-500 text-white" },
                           { name: "Discount / Sale", color: "bg-green-500 text-white" },
@@ -149,34 +238,262 @@ const Hero = ({}: HeroProps) => {
                           { name: "Password Reset", color: "bg-color-1 text-white" },
                           { name: "Transactional", color: "bg-orange-500 text-white" },
                           { name: "Referral", color: "bg-red-500 text-white" },
-                        ])
-                        .map((item, index) => (
-                          <div
-                            key={index}
-                            className="relative w-full"
-                            style={{ marginBottom: "12px" }}
-                          >
+                        ]
+                          .concat([
+                            { name: "B2B", color: "bg-color-1 text-white" },
+                            { name: "B2C", color: "bg-blue-500 text-white" },
+                            { name: "Discount / Sale", color: "bg-green-500 text-white" },
+                            { name: "Apology / error", color: "bg-pink-500 text-white" },
+                            { name: "Newsletter", color: "bg-purple-500 text-white" },
+                            { name: "Event Invitation", color: "bg-cyan-500 text-white" },
+                            { name: "Password Reset", color: "bg-color-1 text-white" },
+                            { name: "Transactional", color: "bg-orange-500 text-white" },
+                            { name: "Referral", color: "bg-red-500 text-white" },
+                          ])
+                          .map((item, index) => (
                             <div
-                              className={`px-4 py-3 ${item.color} text-sm font-code font-bold text-center`}
+                              key={index}
+                              className="relative w-full"
+                              style={{ marginBottom: "12px" }}
                             >
-                              {item.name}
+                              <div
+                                className={`px-4 py-3 ${item.color} text-sm font-code font-bold text-center`}
+                              >
+                                {item.name}
+                              </div>
+                              <div className="overflow-hidden border border-n-1/10 h-[400px]">
+                                <Image
+                                  className="w-full h-full object-cover object-top"
+                                  src={emailImages[index % emailImages.length]}
+                                  width={800}
+                                  height={400}
+                                  alt={item.name}
+                                />
+                              </div>
                             </div>
-                            <div className="overflow-hidden border border-n-1/10 h-[400px]">
-                              <Image
-                                className="w-full h-full object-cover object-top"
-                                src={emailImages[index % emailImages.length]}
-                                width={800}
-                                height={400}
-                                alt={item.name}
-                              />
+                          ))}
+                      </Masonry>
+                    </div>
+                    <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-n-8 to-transparent z-10 pointer-events-none"></div>
+                  </div>
+                </div>
+              )}
+
+              {/* Workflows Tab Content */}
+              {activeTab === "workflows" && (
+                <div className="p-8 md:p-12 lg:p-16 h-[730px]">
+                  <div className="h-full rounded-xl bg-gradient-to-br from-n-7/50 to-n-7/20 border border-n-6/30 p-8 md:p-12">
+                    <div className="flex flex-col items-center justify-center h-full text-center">
+                      <div className="mb-6 inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-color-1/10 backdrop-blur-sm border border-color-1/20">
+                        <svg
+                          className="w-8 h-8 text-color-1"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={1.5}
+                            d="M13 10V3L4 14h7v7l9-11h-7z"
+                          />
+                        </svg>
+                      </div>
+                      <h3 className="h4 mb-3 text-n-1">Automated Workflows</h3>
+                      <p className="body-2 text-n-3 max-w-lg mb-10">
+                        Create powerful automation sequences that trigger when competitors launch
+                        campaigns, update pricing, or make strategic moves.
+                      </p>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-3xl">
+                        {[
+                          {
+                            title: "Auto-tracking",
+                            desc: "Monitor competitors 24/7",
+                            icon: "M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z",
+                          },
+                          {
+                            title: "Smart alerts",
+                            desc: "Get notified instantly",
+                            icon: "M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9",
+                          },
+                          {
+                            title: "Sequential actions",
+                            desc: "Chain multiple steps",
+                            icon: "M4 6h16M4 12h16M4 18h16",
+                          },
+                        ].map((item, i) => (
+                          <div
+                            key={i}
+                            className="p-5 bg-n-8/50 backdrop-blur-sm rounded-xl border border-n-6/30 hover:border-n-6/50 transition-all"
+                          >
+                            <div className="w-10 h-10 mb-4 rounded-lg bg-color-1/10 flex items-center justify-center">
+                              <svg
+                                className="w-5 h-5 text-color-1"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={1.5}
+                                  d={item.icon}
+                                />
+                              </svg>
                             </div>
+                            <div className="text-sm font-semibold text-n-1 mb-2">{item.title}</div>
+                            <div className="text-xs text-n-4">{item.desc}</div>
                           </div>
                         ))}
-                    </Masonry>
+                      </div>
+                    </div>
                   </div>
-                  <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-n-8 to-transparent z-10 pointer-events-none"></div>
                 </div>
-              </div>
+              )}
+
+              {/* Reporting Tab Content */}
+              {activeTab === "reporting" && (
+                <div className="p-8 md:p-12 lg:p-16 h-[730px]">
+                  <div className="h-full rounded-xl bg-gradient-to-br from-n-7/50 to-n-7/20 border border-n-6/30 p-8 md:p-12">
+                    <div className="flex flex-col items-center justify-center h-full text-center">
+                      <div className="mb-6 inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-color-1/10 backdrop-blur-sm border border-color-1/20">
+                        <svg
+                          className="w-8 h-8 text-color-1"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={1.5}
+                            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                          />
+                        </svg>
+                      </div>
+                      <h3 className="h4 mb-3 text-n-1">Advanced Analytics</h3>
+                      <p className="body-2 text-n-3 max-w-lg mb-10">
+                        Generate detailed reports on competitor strategies, campaign performance, and
+                        industry trends with real-time data visualization.
+                      </p>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-3xl">
+                        {[
+                          {
+                            title: "Trend analysis",
+                            desc: "Spot patterns in campaigns",
+                            icon: "M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z",
+                          },
+                          {
+                            title: "Performance metrics",
+                            desc: "Track important KPIs",
+                            icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
+                          },
+                          {
+                            title: "Custom dashboards",
+                            desc: "Build your own reports",
+                            icon: "M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z",
+                          },
+                        ].map((item, i) => (
+                          <div
+                            key={i}
+                            className="p-5 bg-n-8/50 backdrop-blur-sm rounded-xl border border-n-6/30 hover:border-n-6/50 transition-all"
+                          >
+                            <div className="w-10 h-10 mb-4 rounded-lg bg-color-1/10 flex items-center justify-center">
+                              <svg
+                                className="w-5 h-5 text-color-1"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={1.5}
+                                  d={item.icon}
+                                />
+                              </svg>
+                            </div>
+                            <div className="text-sm font-semibold text-n-1 mb-2">{item.title}</div>
+                            <div className="text-xs text-n-4">{item.desc}</div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Pipeline Tab Content */}
+              {activeTab === "pipeline" && (
+                <div className="p-8 md:p-12 lg:p-16 h-[730px]">
+                  <div className="h-full rounded-xl bg-gradient-to-br from-n-7/50 to-n-7/20 border border-n-6/30 p-8 md:p-12">
+                    <div className="flex flex-col items-center justify-center h-full text-center">
+                      <div className="mb-6 inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-color-1/10 backdrop-blur-sm border border-color-1/20">
+                        <svg
+                          className="w-8 h-8 text-color-1"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={1.5}
+                            d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+                          />
+                        </svg>
+                      </div>
+                      <h3 className="h4 mb-3 text-n-1">Campaign Pipeline</h3>
+                      <p className="body-2 text-n-3 max-w-lg mb-10">
+                        Organize and track your marketing campaigns from ideation to execution with a
+                        visual pipeline inspired by competitor insights.
+                      </p>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-3xl">
+                        {[
+                          {
+                            title: "Visual stages",
+                            desc: "Track campaign progress",
+                            icon: "M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2",
+                          },
+                          {
+                            title: "Team collaboration",
+                            desc: "Work together seamlessly",
+                            icon: "M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z",
+                          },
+                          {
+                            title: "Inspiration board",
+                            desc: "Save competitor examples",
+                            icon: "M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z",
+                          },
+                        ].map((item, i) => (
+                          <div
+                            key={i}
+                            className="p-5 bg-n-8/50 backdrop-blur-sm rounded-xl border border-n-6/30 hover:border-n-6/50 transition-all"
+                          >
+                            <div className="w-10 h-10 mb-4 rounded-lg bg-color-1/10 flex items-center justify-center">
+                              <svg
+                                className="w-5 h-5 text-color-1"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={1.5}
+                                  d={item.icon}
+                                />
+                              </svg>
+                            </div>
+                            <div className="text-sm font-semibold text-n-1 mb-2">{item.title}</div>
+                            <div className="text-xs text-n-4">{item.desc}</div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
               <ScrollParallax isAbsolutelyPositioned>
                 <ul className="hidden absolute -left-[5.5rem] bottom-[7.625rem] px-1 py-1 bg-n-1/60 backdrop-blur border border-n-1/10 rounded-2xl xl:flex shadow-xl">
                   {[

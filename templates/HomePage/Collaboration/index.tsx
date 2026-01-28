@@ -11,7 +11,7 @@ const ROTATIONS = [0, 45, 90, 135, 180, 225, 270, 315];
 
 const Collaboration = memo(function Collaboration({}: CollaborationProps) {
   return (
-    <Section crosses>
+    <Section>
       <div className="container lg:flex">
         <div className="max-w-[25rem]">
           <h2 className="h2 mb-4 md:mb-8">Track top brands automatically</h2>
@@ -27,7 +27,7 @@ const Collaboration = memo(function Collaboration({}: CollaborationProps) {
           </ul>
           <Button>Try it now</Button>
         </div>
-        <div className="mt-15 lg:mt-0 lg:mx-auto xl:w-[37.5rem]">
+        <div className="mt-15 lg:mt-0 lg:mx-auto xl:w-[37.5rem] hidden lg:block">
           <div className="relative lg:w-[22.5rem] lg:mx-auto">
             <div className="relative left-1/2 flex w-[22.5rem] aspect-square border border-n-6 rounded-full -translate-x-1/2 scale-75 md:scale-100">
               <div className="flex w-60 aspect-square m-auto border border-n-6 rounded-full">

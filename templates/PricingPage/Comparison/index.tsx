@@ -4,21 +4,20 @@ import Heading from "@/components/Heading";
 import Image from "@/components/Image";
 import Section from "@/components/Section";
 import Tooltip from "@/components/Tooltip";
-
-import { comparison } from "@/mocks/comparison";
+import { useComparison } from "@/hooks/useTranslatedContent";
+import { useTranslations } from "next-intl";
 
 type ComparisonProps = object;
 
 const Comparison = ({}: ComparisonProps) => {
-  const check = (value: any, enterprise?: boolean) =>
+  const comparison = useComparison();
+  const t = useTranslations("comparison");
+  const tPricing = useTranslations("pricing");
+
+  const check = (value: any) =>
     typeof value === "boolean" ? (
       value === true ? (
-        <Image
-          src={enterprise ? "/images/check-yellow.svg" : "/images/check.svg"}
-          width={24}
-          height={24}
-          alt="Check"
-        />
+        <Image src="/images/check.svg" width={24} height={24} alt="Check" />
       ) : null
     ) : (
       value
@@ -27,24 +26,23 @@ const Comparison = ({}: ComparisonProps) => {
   return (
     <Section>
       <div className="container">
-        <Heading className="md:text-center" title="Compare plans & features" />
+        <Heading className="md:text-center" title={tPricing("comparison_title")} />
         <div className="-mx-5 px-5 overflow-auto">
           <table className="table-fixed w-full min-w-[32rem]">
             <tbody>
               <tr className="h6">
-                <td className="w-[35%] py-4 pr-10">Features</td>
-                <td className="p-4 text-center text-color-2">Basic</td>
-                <td className="p-4 text-center text-color-1">Premium</td>
-                <td className="p-4 text-center text-color-3">Enterprise</td>
+                <td className="w-[40%] py-4 pr-10">{tPricing("table_features")}</td>
+                <td className="p-4 text-center text-color-2">{tPricing("table_basic")}</td>
+                <td className="p-4 text-center text-color-1">{tPricing("table_premium")}</td>
               </tr>
               {comparison.map((item) => (
                 <tr className="body-2" key={item.id}>
-                  <td className="w-[35%] h-[4.75rem] py-2.5 pr-2.5 border-t border-n-1/5">
+                  <td className="w-[40%] h-[4.75rem] py-2.5 pr-2.5 border-t border-n-1/5">
                     <div className="flex items-center">
                       {item.title}
                       <Tooltip
                         className="flex-shrink-0 ml-3 opacity-30 transition-opacity hover:opacity-100"
-                        content="Provide dedicated servers for enterprises to ensure maximum security, performance, and uptime."
+                        content="Detailed information about this feature"
                         placement="right"
                         animation="shift-toward"
                       >
@@ -58,13 +56,10 @@ const Comparison = ({}: ComparisonProps) => {
                     </div>
                   </td>
                   <td className="h-[4.75rem] p-2.5 border-t border-n-1/5 text-center">
-                    {check(item.pricing[0], item.enterprise)}
+                    {check(item.pricing[0])}
                   </td>
                   <td className="h-[4.75rem] p-2.5 border-t border-n-1/5 text-center">
-                    {check(item.pricing[1], item.enterprise)}
-                  </td>
-                  <td className="h-[4.75rem] p-2.5 border-t border-n-1/5 text-center">
-                    {check(item.pricing[2], item.enterprise)}
+                    {check(item.pricing[1])}
                   </td>
                 </tr>
               ))}

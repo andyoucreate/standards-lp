@@ -12,6 +12,7 @@
     "waitlist_email": "Email",
     "waitlist_company": "Company",
     "waitlist_job": "Job title",
+    "waitlist_referral": "Referral code (optional)",
     "waitlist_submit": "Join",
     "waitlist_loading": "Joining...",
     "waitlist_success_title": "You're on the list!",

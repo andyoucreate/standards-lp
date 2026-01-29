@@ -12,6 +12,7 @@
     "waitlist_email": "Email",
     "waitlist_company": "Entreprise",
     "waitlist_job": "Poste",
+    "waitlist_referral": "Code parrainage (optionnel)",
     "waitlist_submit": "Rejoindre",
     "waitlist_loading": "En cours...",
     "waitlist_success_title": "Vous êtes inscrit !",

@@ -30,7 +30,46 @@ const WaitingListModal = memo(function WaitingListModal() {
   const [formState, setFormState] = useState<FormState>("idle");
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [errorMessage, setErrorMessage] = useState("");
+  const [waitingCount, setWaitingCount] = useState("");
   const [isVisible, setIsVisible] = useState(false);
+
+  // Fetch webhook data on mount
+  useEffect(() => {
+    async function fetchWebhookData() {
+      try {
+        const countWebhookUrl = process.env.NEXT_PUBLIC_WAITLIST_COUNT_WEBHOOK_URL;
+        console.log("Count webhook URL:", countWebhookUrl);
+        
+        if (!countWebhookUrl) {
+          console.error("Count webhook URL not configured");
+          setWaitingCount("—");
+          return;
+        }
+        
+        console.log("Fetching count from:", countWebhookUrl);
+        const response = await fetch(countWebhookUrl);
+        console.log("Response status:", response.status);
+        
+        const data = await response.json();
+        console.log("Response data:", data);
+        
+        // Extract total_rows and display just the number
+        if (data.total_rows !== undefined) {
+          setWaitingCount(data.total_rows.toString());
+        } else {
+          console.error("total_rows not found in response");
+          setWaitingCount("—");
+        }
+      } catch (error) {
+        console.error("Failed to fetch webhook data:", error);
+        setWaitingCount("—");
+      }
+    }
+    
+    if (isOpen) {
+      fetchWebhookData();
+    }
+  }, [isOpen]);
 
   // Handle animation states
   useEffect(() => {
@@ -53,6 +92,7 @@ const WaitingListModal = memo(function WaitingListModal() {
         setFormState("idle");
         setFormData(initialFormData);
         setErrorMessage("");
+        setWaitingCount("");
       }, 150);
       return () => clearTimeout(timer);
     }
@@ -101,6 +141,7 @@ const WaitingListModal = memo(function WaitingListModal() {
         throw new Error("Failed to submit");
       }
 
+      // Don't overwrite waitingCount with POST response
       setFormState("success");
     } catch {
       setFormState("error");
@@ -175,7 +216,17 @@ const WaitingListModal = memo(function WaitingListModal() {
               </svg>
             </div>
             <h3 className="h4 mb-2">{t("waitlist_success_title")}</h3>
-            <p className="body-2 text-n-4">{t("waitlist_success_text")}</p>
+            <p className="body-2 text-n-4 mb-6">{t("waitlist_success_text")}</p>
+            
+            {/* People in front of you */}
+            <div className="mt-8">
+              <div className="text-xs text-n-4 mb-2">
+                people in front of you
+              </div>
+              <div className="text-5xl font-bold text-n-1 tabular-nums">
+                {waitingCount || "..."}
+              </div>
+            </div>
           </div>
         ) : (
           <>

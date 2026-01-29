@@ -1,9 +1,11 @@
 "use client";
 
 import { useContactModal } from "@/hooks/useContactModal";
+import { useWaitingListModal } from "@/hooks/useWaitingListModal";
 import { Link, usePathname } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
+import type React from "react";
 import Button from "../Button";
 import Logo from "../Logo";
 
@@ -16,7 +18,17 @@ type HeaderProps = object;
 const Header = ({}: HeaderProps) => {
   const pathname = usePathname();
   const { isContactModalOpen, handleContactClick, closeModal } = useContactModal();
+  const openWaitingList = useWaitingListModal((state) => state.open);
   const t = useTranslations("navigation");
+
+  function handleLinkClick(e: React.MouseEvent, url: string) {
+    if (url === "/login" || url === "/login?new=true") {
+      e.preventDefault();
+      openWaitingList();
+    } else {
+      handleContactClick(e, url);
+    }
+  }
 
   const navigation = [
     {
@@ -52,7 +64,7 @@ const Header = ({}: HeaderProps) => {
                       : "text-n-1/50"
                   } leading-5 hover:text-n-1 whitespace-nowrap`}
                   href={item.url}
-                  onClick={(e) => handleContactClick(e, item.url)}
+                  onClick={(e) => handleLinkClick(e, item.url)}
                   key={item.id}
                 >
                   {item.title}
@@ -60,8 +72,8 @@ const Header = ({}: HeaderProps) => {
               ))}
             </div>
           </nav>
-          <Button href="/login?new=true" onClick={(e) => e?.preventDefault()}>
-            {t("signup")}
+          <Button onClick={openWaitingList} white>
+            {t("join_waitlist")}
           </Button>
         </div>
       </div>

@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "biome lint .",
     "format": "biome format --write .",
-    "check": "biome check --write ."
+    "check": "biome check --write .",
+    "generate:favicons": "node scripts/generate-favicons.mjs"
   },
   "dependencies": {
     "@splidejs/react-splide": "^0.7.12",
@@ -16,6 +17,7 @@
     "@vercel/analytics": "^1.4.1",
     "@vercel/speed-insights": "^1.1.0",
     "classnames": "^2.5.1",
+    "motion": "^12.29.2",
     "next": "^16.1.2",
     "next-intl": "^4.7.0",
     "next-themes": "^0.4.4",
@@ -26,7 +28,8 @@
     "react-responsive-masonry": "^2.7.1",
     "react-scroll-into-view": "^1.12.1",
     "scroll-lock": "^2.1.5",
-    "tippy.js": "^6.3.7"
+    "tippy.js": "^6.3.7",
+    "zustand": "^5.0.10"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
@@ -36,7 +39,9 @@
     "@types/react-dom": "^19.0.0",
     "@types/react-responsive-masonry": "^2.1.3",
     "@types/scroll-lock": "^2.1.0",
+    "png-to-ico": "^3.0.1",
     "postcss": "^8.4.49",
+    "sharp": "^0.34.5",
     "tailwindcss": "^4.0.0",
     "typescript": "^5.7.2"
   },

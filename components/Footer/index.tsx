@@ -1,6 +1,8 @@
 "use client";
 
+import type React from "react";
 import { useContactModal } from "@/hooks/useContactModal";
+import { useWaitingListModal } from "@/hooks/useWaitingListModal";
 import { Link } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
@@ -16,7 +18,17 @@ type FooterProps = object;
 
 const Footer = ({}: FooterProps) => {
   const { isContactModalOpen, handleContactClick, closeModal } = useContactModal();
+  const openWaitingList = useWaitingListModal((state) => state.open);
   const t = useTranslations("navigation");
+
+  function handleLinkClick(e: React.MouseEvent, url: string) {
+    if (url === "/login" || url === "/login?new=true") {
+      e.preventDefault();
+      openWaitingList();
+    } else {
+      handleContactClick(e, url);
+    }
+  }
 
   const navigation = [
     {
@@ -60,7 +72,7 @@ const Footer = ({}: FooterProps) => {
               <Link
                 className="px-6 py-8 font-code text-xs font-semibold leading-5 uppercase text-n-1/50 transition-colors hover:text-n-1"
                 href={item.url}
-                onClick={(e) => handleContactClick(e, item.url)}
+                onClick={(e) => handleLinkClick(e, item.url)}
                 key={item.id}
               >
                 {item.title}

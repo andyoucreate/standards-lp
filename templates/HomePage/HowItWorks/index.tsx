@@ -5,8 +5,9 @@ import Image from "@/components/Image";
 import Section from "@/components/Section";
 import Tagline from "@/components/Tagline";
 import { useHowItWorks } from "@/hooks/useTranslatedContent";
-import { useTranslations } from "next-intl";
+import { useWaitingListModal } from "@/hooks/useWaitingListModal";
 import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
+import { useTranslations } from "next-intl";
 import { useRef, useState } from "react";
 
 type HowItWorksProps = {};
@@ -15,6 +16,8 @@ const HowItWorks = ({}: HowItWorksProps) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const howItWorks = useHowItWorks();
   const t = useTranslations("how_it_works");
+  const tNav = useTranslations("navigation");
+  const openWaitingList = useWaitingListModal((state) => state.open);
 
   const ref = useRef<any>(null);
 
@@ -67,7 +70,9 @@ const HowItWorks = ({}: HowItWorksProps) => {
                     </Tagline>
                     <h2 className="h2 mb-4 lg:mb-6">{item.title}</h2>
                     <p className="body-2 mb-10 text-n-3">{item.text}</p>
-                    <Button href="/login">{t("cta")}</Button>
+                    <Button onClick={openWaitingList} white>
+                      {tNav("join_waitlist")}
+                    </Button>
                   </div>
                   <div className="relative lg:w-[29.375rem] lg:flex-shrink-0 lg:mr-[7.125rem] xl:w-[34.375rem] xl:mr-40">
                     <div className="pt-0.25 pl-0.25 overflow-hidden bg-gradient-to-tl from-n-1/0 via-n-1/0 to-n-1/15 rounded-3xl">

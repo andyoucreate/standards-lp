@@ -1,15 +1,21 @@
+"use client";
+
 import Button from "@/components/Button";
 import Image from "@/components/Image";
 import Section from "@/components/Section";
+import { useWaitingListModal } from "@/hooks/useWaitingListModal";
+import { useTranslations } from "next-intl";
 import { memo } from "react";
 
-import { apps, content, text } from "@/mocks/collaboration";
+import { apps, content } from "@/mocks/collaboration";
 
 type CollaborationProps = object;
 
 const ROTATIONS = [0, 45, 90, 135, 180, 225, 270, 315];
 
 const Collaboration = memo(function Collaboration({}: CollaborationProps) {
+  const openWaitingList = useWaitingListModal((state) => state.open);
+  const t = useTranslations("navigation");
   return (
     <Section>
       <div className="container lg:flex">
@@ -25,7 +31,9 @@ const Collaboration = memo(function Collaboration({}: CollaborationProps) {
               </li>
             ))}
           </ul>
-          <Button>Try it now</Button>
+          <Button onClick={openWaitingList} white>
+            {t("join_waitlist")}
+          </Button>
         </div>
         <div className="mt-15 lg:mt-0 lg:mx-auto xl:w-[37.5rem] hidden lg:block">
           <div className="relative lg:w-[22.5rem] lg:mx-auto">

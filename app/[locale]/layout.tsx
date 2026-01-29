@@ -2,13 +2,15 @@ import "@splidejs/react-splide/css";
 import "tippy.js/animations/shift-toward.css";
 import "../globals.css";
 
+import { JsonLd } from "@/components/JsonLd";
+import { routing } from "@/i18n/routing";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
-import { notFound } from "next/navigation";
 import { Manrope } from "next/font/google";
-import { routing } from "@/i18n/routing";
+import { notFound } from "next/navigation";
+import type { ReactNode } from "react";
 import { Providers } from "../providers";
 
 const manrope = Manrope({
@@ -24,7 +26,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: { locale: string } }) {
   const { locale } = await params;
-  
+
   const metadata = {
     fr: {
       title: "emailoverflow - Inspiration Email Marketing Illimitée",
@@ -61,7 +63,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   const content = metadata[locale as keyof typeof metadata] || metadata.fr;
 
   return {
-    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://emailoverflow.com"),
+    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://emailoverflow.ai"),
     title: {
       default: content.title,
       template: "%s | emailoverflow",
@@ -108,8 +110,14 @@ export async function generateMetadata({ params }: { params: { locale: string } 
       icon: [
         { url: "/favicon.ico", sizes: "32x32" },
         { url: "/favicon.svg", type: "image/svg+xml" },
+        { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+        { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
       ],
       apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+    },
+    manifest: "/site.webmanifest",
+    other: {
+      "theme-color": "#0E0C15",
     },
   };
 }
@@ -118,8 +126,8 @@ export default async function LocaleLayout({
   children,
   params,
 }: {
-  children: React.ReactNode;
-  params: { locale: string };
+  children: ReactNode;
+  params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
 
@@ -131,6 +139,9 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning>
+      <head>
+        <JsonLd locale={locale} />
+      </head>
       <body className={`${manrope.variable} font-sans bg-n-8 text-n-1 text-base antialiased`}>
         <NextIntlClientProvider messages={messages}>
           <Providers>

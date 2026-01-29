@@ -17,15 +17,10 @@ const Pricing = memo(function Pricing({}: PricingProps) {
   const t = useTranslations("pricing");
 
   const check = useCallback(
-    (value: boolean | string | null, enterprise?: boolean) =>
+    (value: boolean | string | null) =>
       typeof value === "boolean" ? (
         value === true ? (
-          <Image
-            src={enterprise ? "/images/check-yellow.svg" : "/images/check.svg"}
-            width={24}
-            height={24}
-            alt=""
-          />
+          <Image src="/images/check.svg" width={24} height={24} alt="" />
         ) : null
       ) : (
         value
@@ -77,7 +72,6 @@ const Pricing = memo(function Pricing({}: PricingProps) {
                     <td className="w-[35%] py-4 pr-10">{t("table_features")}</td>
                     <td className="p-4 text-center text-color-2">{t("table_basic")}</td>
                     <td className="p-4 text-center text-color-1">{t("table_premium")}</td>
-                    <td className="p-4 text-center text-color-3">{t("table_enterprise")}</td>
                   </tr>
                   {comparison.map((item) => (
                     <tr className="body-2" key={item.id}>
@@ -100,13 +94,10 @@ const Pricing = memo(function Pricing({}: PricingProps) {
                         </div>
                       </td>
                       <td className="h-[4.75rem] p-2.5 border-t border-n-1/5 text-center">
-                        {check(item.pricing[0], item.enterprise)}
+                        {check(item.pricing[0])}
                       </td>
                       <td className="h-[4.75rem] p-2.5 border-t border-n-1/5 text-center">
-                        {check(item.pricing[1], item.enterprise)}
-                      </td>
-                      <td className="h-[4.75rem] p-2.5 border-t border-n-1/5 text-center">
-                        {check(item.pricing[2], item.enterprise)}
+                        {check(item.pricing[1])}
                       </td>
                     </tr>
                   ))}

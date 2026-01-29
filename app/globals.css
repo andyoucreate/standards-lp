@@ -274,3 +274,19 @@ html:not(.dark) {
     height: 0;
   }
 }
+
+/* Checkmark animation for success state */
+@keyframes draw-check {
+  0% {
+    stroke-dashoffset: 24;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-draw-check {
+  stroke-dasharray: 24;
+  stroke-dashoffset: 24;
+  animation: draw-check 0.4s ease-out 0.2s forwards;
+}

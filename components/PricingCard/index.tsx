@@ -1,4 +1,4 @@
-import Button from "@/components/Button";
+// import Button from "@/components/Button"; // TODO: Uncomment when ready for launch
 import Image from "@/components/Image";
 import { memo } from "react";
 
@@ -47,6 +47,7 @@ const PricingCard = memo(function PricingCard({
             <div className="text-[5.5rem] leading-none font-bold">Gratuit</div>
           )}
         </div>
+        {/* TODO: Uncomment when ready for launch
         <Button
           className="w-full mb-6"
           href={price && price !== "0" ? "/pricing" : "/signup"}
@@ -54,6 +55,7 @@ const PricingCard = memo(function PricingCard({
         >
           {price && price !== "0" ? "Commencer" : "S'inscrire gratuitement"}
         </Button>
+        */}
         <ul>
           {features.map((feature, index) => (
             <li className="flex items-start py-5 border-t border-n-6" key={index}>

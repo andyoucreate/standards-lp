@@ -1,93 +1,42 @@
 "use client";
 
 import Button from "@/components/Button";
-import Generating from "@/components/Generating";
 import Image from "@/components/Image";
 import Logos from "@/components/Logos";
 import Notification from "@/components/Notification";
+import { NumberTicker } from "@/components/NumberTicker";
 import Section from "@/components/Section";
+import { useWaitingListModal } from "@/hooks/useWaitingListModal";
 import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
-import { MouseParallax, ScrollParallax } from "react-just-parallax";
+import { ScrollParallax } from "react-just-parallax";
 import Masonry from "react-responsive-masonry";
 
 type HeroProps = {};
 
-// Counter animation hook with steep rise and soft landing
-function useCountUp(end: number, duration: number = 2000, startCounting: boolean = false) {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    if (!startCounting) return;
-    
-    let startTime: number | null = null;
-    let animationFrame: number;
-
-    const animate = (currentTime: number) => {
-      if (!startTime) startTime = currentTime;
-      const progress = Math.min((currentTime - startTime) / duration, 1);
-      
-      // Custom easing: fast rise (70% of value in first 30% of time)
-      // then soft landing for the remaining 70% of time
-      let easedProgress;
-      if (progress < 0.3) {
-        // Fast rise: reach 70% of value quickly
-        easedProgress = (progress / 0.3) * 0.7;
-      } else {
-        // Soft landing: remaining 30% over 70% of time with gentle deceleration
-        const remainingProgress = (progress - 0.3) / 0.7;
-        const softDecel = 1 - Math.pow(1 - remainingProgress, 3);
-        easedProgress = 0.7 + (softDecel * 0.3);
-      }
-      
-      setCount(Math.floor(end * easedProgress));
-
-      if (progress < 1) {
-        animationFrame = requestAnimationFrame(animate);
-      } else {
-        setCount(end);
-      }
-    };
-
-    animationFrame = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(animationFrame);
-  }, [end, duration, startCounting]);
-
-  return count;
-}
-
 const Hero = ({}: HeroProps) => {
-  const [mounted, setMounted] = useState<boolean>(false);
   const [activeTab, setActiveTab] = useState<string>("data");
   const scrollRef = useRef<HTMLDivElement>(null);
   const t = useTranslations("hero");
+  const openWaitingList = useWaitingListModal((state) => state.open);
 
   // Calculate emails count: 5000 emails per day
   // 1 day = 86,400 seconds / 5000 emails = 17.28 seconds per email
   const calculateEmailsCount = () => {
     const startDate = new Date("2026-01-28T00:00:00");
     const now = new Date();
-    
+
     // Calculate total seconds elapsed
     const secondsElapsed = (now.getTime() - startDate.getTime()) / 1000;
-    
+
     // One email every 17.28 seconds (86400 seconds / 5000 emails)
     const secondsPerEmail = 86400 / 5000;
     const emailsToAdd = Math.floor(secondsElapsed / secondsPerEmail);
-    
+
     return 2119931 + emailsToAdd;
   };
 
   const targetEmailsCount = calculateEmailsCount();
-
-  // Counter values - longer durations to give time for soft landing
-  const emailsCount = useCountUp(targetEmailsCount, 5000, mounted);
-  const brandsCount = useCountUp(850, 4500, mounted);
-  const industriesCount = useCountUp(50, 4000, mounted);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     const scrollContainer = scrollRef.current;
@@ -144,28 +93,26 @@ const Hero = ({}: HeroProps) => {
       <div className="container relative" ref={parallaxRef}>
         <div className="relative z-1 max-w-[62rem] mx-auto mb-[3.875rem] text-center md:mb-20 lg:mb-[6.25rem]">
           <h1 className="h1 mb-6">{t("title")}</h1>
-          <p className="body-1 max-w-3xl mx-auto mb-6 text-n-2 lg:mb-8">
-            {t("description")}
-          </p>
+          <p className="body-1 max-w-3xl mx-auto mb-6 text-n-2 lg:mb-8">{t("description")}</p>
           <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
-            <Button href="/pricing" white>
-              {t("cta_start")}
+            <Button onClick={openWaitingList} white>
+              {t("cta_waitlist")}
             </Button>
+            {/* TODO: Uncomment when ready for launch
             <Button href="https://cal.com/your-calendar-link" lightGray>
               {t("cta_demo")}
             </Button>
+            */}
           </div>
           <div className="mt-12 flex justify-center gap-16 flex-wrap lg:gap-24">
             <div className="text-center">
               <div className="text-sm text-n-3 mb-3">{t("stats.emails")}</div>
-              <div className="text-5xl font-bold text-n-1">
-                {mounted ? emailsCount.toLocaleString() : "2,119,931"}
-              </div>
+              <NumberTicker value={targetEmailsCount} className="text-5xl font-bold text-n-1" />
             </div>
             <div className="text-center">
               <div className="text-sm text-n-3 mb-3">{t("stats.brands")}</div>
               <div className="text-5xl font-bold text-n-1">
-                {mounted ? `${brandsCount}+` : "850+"}
+                <NumberTicker value={850} delay={0.2} />+
               </div>
             </div>
             <div className="text-center">
@@ -175,7 +122,7 @@ const Hero = ({}: HeroProps) => {
             <div className="text-center">
               <div className="text-sm text-n-3 mb-3">{t("stats.industries")}</div>
               <div className="text-5xl font-bold text-n-1">
-                {mounted ? `${industriesCount}+` : "50+"}
+                <NumberTicker value={50} delay={0.4} />+
               </div>
             </div>
           </div>
@@ -194,9 +141,7 @@ const Hero = ({}: HeroProps) => {
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex-1 px-5 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 ${
-                  activeTab === tab.id
-                    ? "bg-n-8 text-n-1 shadow-lg"
-                    : "text-n-3 hover:text-n-1"
+                  activeTab === tab.id ? "bg-n-8 text-n-1 shadow-lg" : "text-n-3 hover:text-n-1"
                 }`}
               >
                 {tab.label}
@@ -373,8 +318,8 @@ const Hero = ({}: HeroProps) => {
                       </div>
                       <h3 className="h4 mb-3 text-n-1">Advanced Analytics</h3>
                       <p className="body-2 text-n-3 max-w-lg mb-10">
-                        Generate detailed reports on competitor strategies, campaign performance, and
-                        industry trends with real-time data visualization.
+                        Generate detailed reports on competitor strategies, campaign performance,
+                        and industry trends with real-time data visualization.
                       </p>
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-3xl">
                         {[
@@ -445,8 +390,8 @@ const Hero = ({}: HeroProps) => {
                       </div>
                       <h3 className="h4 mb-3 text-n-1">Campaign Pipeline</h3>
                       <p className="body-2 text-n-3 max-w-lg mb-10">
-                        Organize and track your marketing campaigns from ideation to execution with a
-                        visual pipeline inspired by competitor insights.
+                        Organize and track your marketing campaigns from ideation to execution with
+                        a visual pipeline inspired by competitor insights.
                       </p>
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-3xl">
                         {[

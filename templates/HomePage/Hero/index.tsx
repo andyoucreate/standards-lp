@@ -10,7 +10,6 @@ import { useWaitingListModal } from "@/hooks/useWaitingListModal";
 import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import { ScrollParallax } from "react-just-parallax";
-import Masonry from "react-responsive-masonry";
 
 type HeroProps = {};
 
@@ -155,7 +154,7 @@ const Hero = ({}: HeroProps) => {
             <div className="relative bg-n-8 rounded-[0.875rem]">
               {/* Explorer UI Screenshot - Fixed at top - Only for Data tab */}
               {activeTab === "data" && (
-                <div className="sticky top-0 z-20 bg-n-8 rounded-t-[0.875rem] overflow-hidden">
+                <div className="sticky top-0 z-0 bg-n-8 rounded-[0.875rem] overflow-hidden">
                   <Image
                     className="w-full h-auto"
                     src="/images/explorer-ui.png"
@@ -163,64 +162,6 @@ const Hero = ({}: HeroProps) => {
                     height={240}
                     alt="Explorer Interface"
                   />
-                </div>
-              )}
-
-              {/* Data Tab Content */}
-              {activeTab === "data" && (
-                <div className="overflow-hidden h-[490px]">
-                  <div className="relative w-full h-full">
-                    <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-n-8 to-transparent z-10 pointer-events-none"></div>
-                    <div ref={scrollRef} className="h-full overflow-hidden">
-                      <Masonry columnsCount={4} gutter="24px">
-                        {[
-                          { name: "B2B", color: "bg-color-1 text-white" },
-                          { name: "B2C", color: "bg-blue-500 text-white" },
-                          { name: "Discount / Sale", color: "bg-green-500 text-white" },
-                          { name: "Apology / error", color: "bg-pink-500 text-white" },
-                          { name: "Newsletter", color: "bg-purple-500 text-white" },
-                          { name: "Event Invitation", color: "bg-cyan-500 text-white" },
-                          { name: "Password Reset", color: "bg-color-1 text-white" },
-                          { name: "Transactional", color: "bg-orange-500 text-white" },
-                          { name: "Referral", color: "bg-red-500 text-white" },
-                        ]
-                          .concat([
-                            { name: "B2B", color: "bg-color-1 text-white" },
-                            { name: "B2C", color: "bg-blue-500 text-white" },
-                            { name: "Discount / Sale", color: "bg-green-500 text-white" },
-                            { name: "Apology / error", color: "bg-pink-500 text-white" },
-                            { name: "Newsletter", color: "bg-purple-500 text-white" },
-                            { name: "Event Invitation", color: "bg-cyan-500 text-white" },
-                            { name: "Password Reset", color: "bg-color-1 text-white" },
-                            { name: "Transactional", color: "bg-orange-500 text-white" },
-                            { name: "Referral", color: "bg-red-500 text-white" },
-                          ])
-                          .map((item, index) => (
-                            <div
-                              key={index}
-                              className="relative w-full"
-                              style={{ marginBottom: "12px" }}
-                            >
-                              <div
-                                className={`px-4 py-3 ${item.color} text-sm font-code font-bold text-center`}
-                              >
-                                {item.name}
-                              </div>
-                              <div className="overflow-hidden border border-n-1/10 h-[400px]">
-                                <Image
-                                  className="w-full h-full object-cover object-top"
-                                  src={emailImages[index % emailImages.length]}
-                                  width={800}
-                                  height={400}
-                                  alt={item.name}
-                                />
-                              </div>
-                            </div>
-                          ))}
-                      </Masonry>
-                    </div>
-                    <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-n-8 to-transparent z-10 pointer-events-none"></div>
-                  </div>
                 </div>
               )}
 

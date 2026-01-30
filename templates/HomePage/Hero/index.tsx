@@ -129,8 +129,8 @@ const Hero = ({}: HeroProps) => {
           </div>
         </div>
 
-        {/* Tabs Navigation - Attio Style - Full Width */}
-        <div className="flex justify-center mb-6 md:mb-8">
+        {/* Tabs Navigation - Attio Style - Full Width (hidden for now) */}
+        <div className="hidden flex justify-center mb-6 md:mb-8">
           <div className="flex items-center gap-1 p-1 bg-n-7/30 backdrop-blur-sm rounded-xl border border-n-6/50 w-full max-w-2xl">
             {[
               { id: "data", label: "Data" },
@@ -151,7 +151,7 @@ const Hero = ({}: HeroProps) => {
           </div>
         </div>
 
-        <div className="relative max-w-[23.25rem] mx-auto md:max-w-5xl lg:max-w-7xl xl:max-w-[90rem] xl:mb-24">
+        <div className="relative w-full max-w-none md:max-w-5xl md:mx-auto lg:max-w-7xl xl:max-w-[90rem] xl:mb-24">
           <div className="relative z-1 border border-n-6 rounded-2xl">
             <div className="relative bg-n-8 rounded-[0.875rem]">
               {/* Explorer UI Screenshot - Fixed at top - Only for Data tab */}

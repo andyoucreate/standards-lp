@@ -32,7 +32,7 @@ const Footer = ({}: FooterProps) => {
     {
       id: "1",
       title: t("contact"),
-      url: "/contact",
+      url: "mailto:marvin@emailoverflow.ai",
     },
     {
       id: "5",
@@ -68,23 +68,35 @@ const Footer = ({}: FooterProps) => {
             ))}
           </nav>
         </div>
-        <div className="lg:flex lg:items-center lg:justify-between px-8">
-          <div className="hidden caption text-n-4 lg:block">
+        <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2 py-4 border-b border-n-6 lg:hidden px-8">
+          {navigation.map((item) => (
+            <Link
+              className="font-code text-xs font-semibold leading-5 uppercase text-n-1/50 transition-colors hover:text-n-1"
+              href={item.url}
+              onClick={(e) => handleLinkClick(e, item.url)}
+              key={item.id}
+            >
+              {item.title}
+            </Link>
+          ))}
+        </nav>
+        <div className="flex flex-col items-center gap-4 py-4 lg:flex-row lg:items-center lg:justify-between lg:py-0 px-8">
+          <div className="caption text-n-4 order-2 lg:order-1">
             © {new Date().getFullYear()} emailoverflow
           </div>
-          <div className="hidden caption text-n-4 lg:flex lg:items-center lg:gap-4">
+          <div className="caption text-n-4 flex items-center gap-4 order-1 lg:order-2">
             <span>
               Standardisé par{" "}
               <a
                 href="https://www.andyoucreate.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-bold text-color-1 hover:text-n-1 transition-colors"
+                className="font-bold text-n-1 hover:text-n-1/80 transition-colors"
               >
                 &YC
               </a>
             </span>
-            <span className="text-n-1/30">·</span>
+            <span className="text-n-1/30 hidden lg:inline">·</span>
             <LanguageSwitcher />
           </div>
         </div>

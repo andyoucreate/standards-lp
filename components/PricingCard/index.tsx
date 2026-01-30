@@ -3,20 +3,30 @@ import Image from "@/components/Image";
 import { memo } from "react";
 
 interface PricingCardProps {
+  overline?: string;
   title: string;
   description: string;
   price?: string | null;
   priceLabel?: string;
+  originalPrice?: string;
+  discountLabel?: string;
+  badgeSaveLabel?: string;
+  badgeLaunchLabel?: string;
   features: string[];
   featured?: boolean;
   monthly?: boolean;
 }
 
 const PricingCard = memo(function PricingCard({
+  overline,
   title,
   description,
   price,
   priceLabel,
+  originalPrice,
+  discountLabel,
+  badgeSaveLabel,
+  badgeLaunchLabel,
   features,
   featured = false,
   monthly = true,
@@ -28,17 +38,28 @@ const PricingCard = memo(function PricingCard({
   };
 
   const displayPrice = calculatePrice();
+  const showBadge = originalPrice && (badgeSaveLabel ?? badgeLaunchLabel);
 
   return (
-    <div className={`${featured ? "" : "py-3"}`}>
+    <div className="h-full flex flex-col">
       <div
-        className={`w-full h-full px-6 ${
-          featured ? "py-12" : "py-8"
-        } bg-n-8 border border-n-6 rounded-[2rem]`}
+        className="w-full flex-1 flex flex-col px-6 py-12 bg-n-8 border border-n-6 rounded-[2rem] relative min-h-0"
       >
+        {showBadge && (
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-color-1 text-n-8 caption font-semibold uppercase tracking-wider whitespace-nowrap">
+            {badgeSaveLabel && <span>{badgeSaveLabel}</span>}
+            {originalPrice && (
+              <span className="line-through opacity-80">{originalPrice}€</span>
+            )}
+            {badgeLaunchLabel && <span>{badgeLaunchLabel}</span>}
+          </div>
+        )}
+        {overline && (
+          <p className="caption mb-1.5 uppercase tracking-wider text-n-1/50">{overline}</p>
+        )}
         <h4 className="h4 mb-4 text-n-1">{title}</h4>
         <p className="body-2 min-h-[4rem] mb-3 text-n-1/50">{description}</p>
-        <div className="flex items-center min-h-[2.5rem] mb-6">
+        <div className="flex items-center min-h-[2.5rem] mb-6 flex-wrap gap-x-2 gap-y-1">
           {displayPrice !== null && displayPrice !== "0" && (
             <>
               <div className="text-[2rem] leading-none font-bold inline-flex items-baseline gap-0.5">
@@ -50,7 +71,12 @@ const PricingCard = memo(function PricingCard({
             <div className="text-[2rem] leading-none font-bold">Gratuit</div>
           )}
           {displayPrice === null && priceLabel && (
-            <div className="text-[2rem] leading-none font-bold">{priceLabel}</div>
+            <a
+              href="mailto:marvin@emailoverflow.ai"
+              className="text-[2rem] leading-none font-bold text-n-1 hover:text-n-1/80 transition-colors"
+            >
+              {priceLabel}
+            </a>
           )}
         </div>
         {/* TODO: Uncomment when ready for launch
@@ -62,7 +88,7 @@ const PricingCard = memo(function PricingCard({
           {price && price !== "0" ? "Commencer" : "S'inscrire gratuitement"}
         </Button>
         */}
-        <ul>
+        <ul className="flex flex-col">
           {features.map((feature, index) => (
             <li className="flex items-start py-5 border-t border-n-6" key={index}>
               <Image src="/images/check.svg" width={24} height={24} alt="" />

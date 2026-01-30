@@ -211,6 +211,10 @@ html:not(.dark) {
     overflow: visible;
   }
 
+  .splide-pricing .splide__list {
+    justify-content: flex-start;
+  }
+
   .splide-custom,
   .splide-custom .splide__track,
   .splide-custom .splide__list {

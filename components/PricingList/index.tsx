@@ -24,46 +24,58 @@ const PricingList = memo(function PricingList({ monthly = true }: PricingListPro
 
   return (
     <>
-      <Splide
-        className="splide-pricing splide-visible lg:hidden"
-        options={{
-          autoWidth: true,
-          pagination: false,
-          arrows: false,
-          gap: "1rem",
-        }}
-        onMoved={(_, newIndex) => setActiveIndex(newIndex)}
-        hasTrack={false}
-        ref={ref}
-      >
-        <SplideTrack>
-          {pricing.map((item, index) => (
-            <SplideSlide className={`${index === 1 ? "" : "py-3"}`} key={item.id}>
-              <div className="w-[19rem] lg:w-full">
+      <div className="max-w-[500px] lg:hidden">
+        <Splide
+          className="splide-pricing splide-visible"
+          options={{
+            autoWidth: true,
+            pagination: false,
+            arrows: false,
+            gap: "1rem",
+          }}
+          onMoved={(_, newIndex) => setActiveIndex(newIndex)}
+          hasTrack={false}
+          ref={ref}
+        >
+          <SplideTrack>
+            {pricing.map((item, index) => (
+              <SplideSlide key={item.id}>
+                <div className="w-[90vw] max-w-[500px] lg:w-full lg:h-full flex flex-col">
                 <PricingCard
+                  overline={"overline" in item ? item.overline : undefined}
                   title={item.title}
                   description={item.description}
                   price={item.price}
                   priceLabel={item.priceLabel}
+                  originalPrice={"originalPrice" in item ? item.originalPrice : undefined}
+                  discountLabel={"discountLabel" in item ? item.discountLabel : undefined}
+                  badgeSaveLabel={"badgeSaveLabel" in item ? item.badgeSaveLabel : undefined}
+                  badgeLaunchLabel={"badgeLaunchLabel" in item ? item.badgeLaunchLabel : undefined}
                   features={item.features}
-                  featured={index === 1}
+                  featured={index === 0}
                   monthly={monthly}
                 />
               </div>
-            </SplideSlide>
-          ))}
-        </SplideTrack>
-      </Splide>
-      <div className="hidden lg:grid lg:grid-cols-3 lg:gap-6 lg:max-w-6xl lg:mx-auto">
+              </SplideSlide>
+            ))}
+          </SplideTrack>
+        </Splide>
+      </div>
+      <div className="hidden lg:grid lg:grid-cols-2 lg:gap-6 lg:max-w-5xl lg:mx-auto lg:items-stretch">
         {pricing.map((item, index) => (
           <PricingCard
             key={item.id}
+            overline={"overline" in item ? item.overline : undefined}
             title={item.title}
             description={item.description}
             price={item.price}
             priceLabel={item.priceLabel}
+            originalPrice={"originalPrice" in item ? item.originalPrice : undefined}
+            discountLabel={"discountLabel" in item ? item.discountLabel : undefined}
+            badgeSaveLabel={"badgeSaveLabel" in item ? item.badgeSaveLabel : undefined}
+            badgeLaunchLabel={"badgeLaunchLabel" in item ? item.badgeLaunchLabel : undefined}
             features={item.features}
-            featured={index === 1}
+            featured={index === 0}
             monthly={monthly}
           />
         ))}

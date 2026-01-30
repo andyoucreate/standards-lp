@@ -2,7 +2,6 @@
 
 import Join from "@/components/Join";
 import Layout from "@/components/Layout";
-import Faq from "@/templates/PricingPage/Faq";
 import Benefits from "./Benefits";
 import Collaboration from "./Collaboration";
 import Hero from "./Hero";
@@ -18,7 +17,7 @@ const HomePage = () => {
       <HowItWorks />
       <Pricing />
       {/* <Community /> */}
-      <Faq />
+      {/* <Faq /> */}
       <Join />
     </Layout>
   );

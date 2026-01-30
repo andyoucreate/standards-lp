@@ -30,7 +30,7 @@ const Header = ({}: HeaderProps) => {
     {
       id: "1",
       title: t("contact"),
-      url: "/contact",
+      url: "mailto:marvin@emailoverflow.ai",
     },
   ];
 

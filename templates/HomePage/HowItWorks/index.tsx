@@ -63,7 +63,7 @@ const HowItWorks = ({}: HowItWorksProps) => {
           <SplideTrack style={{ overflow: "visible" }}>
             {howItWorks.map((item, index) => (
               <SplideSlide key={item.id}>
-                <div className="lg:flex lg:flex-row-reverse lg:items-center pb-6 lg:pb-0">
+                <div className="lg:flex lg:flex-row-reverse lg:items-center lg:gap-12 xl:gap-16">
                   <div className="">
                     <Tagline className="mb-4 lg:mb-6">
                       {t("label")}: 0{index + 1}.
@@ -74,7 +74,7 @@ const HowItWorks = ({}: HowItWorksProps) => {
                       {tNav("join_waitlist")}
                     </Button>
                   </div>
-                  <div className="relative lg:w-[29.375rem] lg:flex-shrink-0 lg:mr-[7.125rem] xl:w-[34.375rem] xl:mr-40">
+                  <div className="relative mt-8 lg:mt-0 lg:w-[29.375rem] lg:flex-shrink-0 lg:mr-[7.125rem] xl:w-[34.375rem] xl:mr-40">
                     <div className="pt-0.25 pl-0.25 overflow-hidden bg-gradient-to-tl from-n-1/0 via-n-1/0 to-n-1/15 rounded-3xl">
                       <div className="h-[30.5rem] bg-n-7 rounded-[1.4375rem] xl:h-[35.625rem]">
                         <Image

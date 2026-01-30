@@ -55,8 +55,8 @@ const apps = [
   },
   {
     id: "5",
-    title: "Lululemon",
-    icon: "/images/brands/Lululemon.svg",
+    title: "Decathlon",
+    icon: "/images/brands/Decathlon-black.svg",
     width: 34,
     height: 34,
   },

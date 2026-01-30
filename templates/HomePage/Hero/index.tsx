@@ -166,6 +166,7 @@ const Hero = ({}: HeroProps) => {
                     src="/images/explorer-ui.png"
                     width={1440}
                     height={240}
+                    quality={100}
                     alt="Explorer Interface"
                   />
                 </div>

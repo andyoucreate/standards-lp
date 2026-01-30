@@ -56,7 +56,9 @@ const Footer = ({}: FooterProps) => {
         <div className="flex items-center justify-center h-[6.5rem] mb-6 border-b border-n-6 lg:justify-start px-8">
           <Logo variant="header" />
           <nav className="hidden lg:flex items-center justify-center ml-auto">
-            {navigation.map((item) => (
+            {navigation
+              .filter((item) => item.id !== "5" && item.id !== "6")
+              .map((item) => (
               <Link
                 className="px-6 py-8 font-code text-xs font-semibold leading-5 uppercase text-n-1/50 transition-colors hover:text-n-1"
                 href={item.url}
@@ -65,7 +67,7 @@ const Footer = ({}: FooterProps) => {
               >
                 {item.title}
               </Link>
-            ))}
+              ))}
           </nav>
         </div>
         <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2 py-4 border-b border-n-6 lg:hidden px-8">

@@ -38,33 +38,39 @@ const PricingCard = memo(function PricingCard({
   };
 
   const displayPrice = calculatePrice();
-  const showBadge = originalPrice && (badgeSaveLabel ?? badgeLaunchLabel);
+  const showDiscountInline =
+    displayPrice !== null &&
+    displayPrice !== "0" &&
+    originalPrice &&
+    (badgeSaveLabel ?? badgeLaunchLabel);
 
   return (
     <div className="h-full flex flex-col">
       <div
         className="w-full flex-1 flex flex-col px-6 py-12 bg-n-8 border border-n-6 rounded-[2rem] relative min-h-0"
       >
-        {showBadge && (
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-color-1 text-n-8 caption font-semibold uppercase tracking-wider whitespace-nowrap">
-            {badgeSaveLabel && <span>{badgeSaveLabel}</span>}
-            {originalPrice && (
-              <span className="line-through opacity-80">{originalPrice}€</span>
-            )}
-            {badgeLaunchLabel && <span>{badgeLaunchLabel}</span>}
-          </div>
-        )}
         {overline && (
           <p className="caption mb-1.5 uppercase tracking-wider text-n-1/50">{overline}</p>
         )}
         <h4 className="h4 mb-4 text-n-1">{title}</h4>
         <p className="body-2 min-h-[4rem] mb-3 text-n-1/50">{description}</p>
-        <div className="flex items-center min-h-[2.5rem] mb-6 flex-wrap gap-x-2 gap-y-1">
+        <div className="flex items-baseline min-h-[2.5rem] mb-6 flex-wrap gap-x-3 gap-y-2">
           {displayPrice !== null && displayPrice !== "0" && (
             <>
-              <div className="text-[2rem] leading-none font-bold inline-flex items-baseline gap-0.5">
-                {displayPrice}€<span className="text-sm text-n-1/50 font-normal align-baseline">/mois</span>
+              <div className="text-[2rem] leading-none font-bold text-n-1 inline-flex items-baseline gap-0.5">
+                {displayPrice}€
+                <span className="text-sm text-n-1/50 font-normal align-baseline">/mois</span>
               </div>
+              {showDiscountInline && (
+                <>
+                  <span className="text-lg text-n-1/50 line-through">{originalPrice}€</span>
+                  {(badgeSaveLabel ?? badgeLaunchLabel) && (
+                    <span className="self-center inline-flex items-center px-2.5 py-1 rounded-full bg-[var(--color-success)]/15 text-[var(--color-success)] caption font-semibold">
+                      {badgeSaveLabel ?? badgeLaunchLabel}
+                    </span>
+                  )}
+                </>
+              )}
             </>
           )}
           {displayPrice === "0" && (

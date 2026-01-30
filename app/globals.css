@@ -105,7 +105,7 @@ html:not(.dark) {
   }
 
   body {
-    @apply bg-n-8 text-n-1 antialiased transition-colors duration-300;
+    @apply bg-n-8 text-n-1 antialiased transition-colors duration-300 overflow-x-hidden;
   }
 }
 

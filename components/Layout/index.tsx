@@ -7,7 +7,7 @@ type LayoutProps = {
 };
 
 const Layout = ({ hideFooter, children }: LayoutProps) => (
-  <div className="pt-[6.25rem] lg:pt-[6.75rem]">
+  <div className="pt-[6.25rem] lg:pt-[6.75rem] overflow-x-hidden">
     <Header />
     {children}
     {hideFooter ? null : <Footer />}

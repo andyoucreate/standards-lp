@@ -39,7 +39,7 @@ const Header = ({}: HeaderProps) => {
       <div className="fixed top-6 left-8 right-8 z-50 bg-n-8/80 backdrop-blur-md border border-n-6 rounded-2xl lg:left-1/2 lg:right-auto lg:-translate-x-1/2">
         <div className="flex items-center h-[5.25rem] px-6 xl:px-8">
           <Logo variant="header" className="pr-3 xl:mr-4" />
-          <nav className="flex ml-auto lg:mx-auto">
+          <nav className="hidden lg:flex ml-auto lg:mx-auto">
             <div className="relative z-2 flex flex-row whitespace-nowrap">
               {navigation.map((item) => (
                 <Link
@@ -55,7 +55,7 @@ const Header = ({}: HeaderProps) => {
               ))}
             </div>
           </nav>
-          <Button onClick={openWaitingList} white>
+          <Button onClick={openWaitingList} white className="ml-auto lg:ml-0">
             {t("join_waitlist")}
           </Button>
         </div>

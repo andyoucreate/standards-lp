@@ -107,7 +107,7 @@ const Hero = ({}: HeroProps) => {
             </Button>
             */}
           </div>
-          <div className="mt-12 flex flex-nowrap justify-center items-center gap-4 md:gap-6 lg:gap-10">
+          <div className="mt-12 flex flex-col md:flex-row md:flex-nowrap md:justify-center md:items-center gap-4 md:gap-6 lg:gap-10">
             <div className="text-center shrink-0">
               <div className="text-xs text-n-3 mb-1.5">{t("stats.emails")}</div>
               <NumberTicker value={targetEmailsCount} className="text-2xl sm:text-3xl lg:text-4xl font-bold text-n-1" />

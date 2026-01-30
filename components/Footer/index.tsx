@@ -2,7 +2,6 @@
 
 import type React from "react";
 import { useContactModal } from "@/hooks/useContactModal";
-import { useWaitingListModal } from "@/hooks/useWaitingListModal";
 import { Link } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
@@ -18,16 +17,10 @@ type FooterProps = object;
 
 const Footer = ({}: FooterProps) => {
   const { isContactModalOpen, handleContactClick, closeModal } = useContactModal();
-  const openWaitingList = useWaitingListModal((state) => state.open);
   const t = useTranslations("navigation");
 
   function handleLinkClick(e: React.MouseEvent, url: string) {
-    if (url === "/login" || url === "/login?new=true") {
-      e.preventDefault();
-      openWaitingList();
-    } else {
-      handleContactClick(e, url);
-    }
+    handleContactClick(e, url);
   }
 
   const navigation = [
@@ -40,11 +33,6 @@ const Footer = ({}: FooterProps) => {
       id: "1",
       title: t("contact"),
       url: "/contact",
-    },
-    {
-      id: "2",
-      title: t("login"),
-      url: "/login",
     },
     {
       id: "5",
@@ -66,7 +54,7 @@ const Footer = ({}: FooterProps) => {
         customPaddings
       >
         <div className="flex items-center justify-center h-[6.5rem] mb-6 border-b border-n-6 lg:justify-start px-8">
-          <Logo />
+          <Logo variant="header" />
           <nav className="hidden lg:flex items-center justify-center ml-auto">
             {navigation.map((item) => (
               <Link

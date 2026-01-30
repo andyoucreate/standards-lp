@@ -6,6 +6,7 @@ interface PricingCardProps {
   title: string;
   description: string;
   price?: string | null;
+  priceLabel?: string;
   features: string[];
   featured?: boolean;
   monthly?: boolean;
@@ -15,6 +16,7 @@ const PricingCard = memo(function PricingCard({
   title,
   description,
   price,
+  priceLabel,
   features,
   featured = false,
   monthly = true,
@@ -36,15 +38,19 @@ const PricingCard = memo(function PricingCard({
       >
         <h4 className="h4 mb-4 text-n-1">{title}</h4>
         <p className="body-2 min-h-[4rem] mb-3 text-n-1/50">{description}</p>
-        <div className="flex items-center h-[5.5rem] mb-6">
+        <div className="flex items-center min-h-[2.5rem] mb-6">
           {displayPrice !== null && displayPrice !== "0" && (
             <>
-              <div className="text-[5.5rem] leading-none font-bold">{displayPrice}</div>
-              <div className="h6 ml-2 text-n-1/50">€/mois</div>
+              <div className="text-[2rem] leading-none font-bold inline-flex items-baseline gap-0.5">
+                {displayPrice}€<span className="text-sm text-n-1/50 font-normal align-baseline">/mois</span>
+              </div>
             </>
           )}
           {displayPrice === "0" && (
-            <div className="text-[5.5rem] leading-none font-bold">Gratuit</div>
+            <div className="text-[2rem] leading-none font-bold">Gratuit</div>
+          )}
+          {displayPrice === null && priceLabel && (
+            <div className="text-[2rem] leading-none font-bold">{priceLabel}</div>
           )}
         </div>
         {/* TODO: Uncomment when ready for launch

@@ -44,6 +44,7 @@ const PricingList = memo(function PricingList({ monthly = true }: PricingListPro
                   title={item.title}
                   description={item.description}
                   price={item.price}
+                  priceLabel={item.priceLabel}
                   features={item.features}
                   featured={index === 1}
                   monthly={monthly}
@@ -53,13 +54,14 @@ const PricingList = memo(function PricingList({ monthly = true }: PricingListPro
           ))}
         </SplideTrack>
       </Splide>
-      <div className="hidden lg:grid lg:grid-cols-2 lg:gap-6 lg:max-w-5xl lg:mx-auto">
+      <div className="hidden lg:grid lg:grid-cols-3 lg:gap-6 lg:max-w-6xl lg:mx-auto">
         {pricing.map((item, index) => (
           <PricingCard
             key={item.id}
             title={item.title}
             description={item.description}
             price={item.price}
+            priceLabel={item.priceLabel}
             features={item.features}
             featured={index === 1}
             monthly={monthly}

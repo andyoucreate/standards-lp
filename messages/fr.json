@@ -31,7 +31,9 @@
       "emails": "Emails indexés",
       "brands": "Marques suivies",
       "tracking": "Veille automatique",
-      "industries": "Industries"
+      "industries_analysed": "Industries analysées",
+      "industries": "Industries",
+      "sequences_analysed": "Séquences d'emails analysées"
     }
   },
   "features": {
@@ -52,9 +54,17 @@
     }
   },
   "benefits": {
-    "section_title": "Trouvez l'inspiration marketing instantanément avec emailoverflow",
+    "section_title": "La page blanche, c'est fini. Générez vos emails à la volée",
     "search_all_title": "Recherchez tout",
     "search_all_text": "Trouvez l'email, la publicité ou la landing page parfaite instantanément avec le moteur de recherche marketing le plus avancé.",
+    "emails_title": "Emails",
+    "emails_text": "Accédez à +2M d'emails pour surveiller vos concurrents et copier les meilleurs.",
+    "sequences_title": "Séquences d'emails",
+    "sequences_text": "Visualisez les séquences d'emails et la logique temporelle (J+1, J+3).",
+    "create_emails_title": "Créez vos emails en 1 clic",
+    "create_emails_text": "Transformez vos listes d'inspiration en nouvelles campagnes parfaitement adaptées à vous.",
+    "analyse_market_title": "Analysez le marché",
+    "analyse_market_text": "Générez des audits sectoriels à la volée et détectez les tendances par marque, typologie d'email, et bien d'autres données accessibles.",
     "auto_tracking_title": "Suivi automatique",
     "auto_tracking_text": "Surveillez tous vos concurrents en un seul endroit. Plus besoin de s'abonner manuellement à des centaines de newsletters.",
     "realtime_title": "Insights en temps réel",
@@ -70,8 +80,19 @@
     "collaboration_title": "Collaboration d'équipe",
     "collaboration_text": "Partagez des insights, sauvegardez vos favoris et travaillez ensemble de manière fluide avec votre équipe marketing dans un espace unifié."
   },
+  "collaboration": {
+    "title": "Suivez vos concurrents, copiez les meilleurs."
+  },
   "how_it_works": {
     "label": "Comment ça marche",
+    "step1_title": "Définissez votre profil",
+    "step1_text": "Inscrivez-vous et renseignez simplement votre site web. L'IA analyse uniquement vos pages publiques pour comprendre votre charte et votre tonalité.",
+    "step2_title": "Ciblez votre veille",
+    "step2_text": "Sélectionnez les concurrents directs, les secteurs ou les marques inspirantes que vous souhaitez surveiller. Notre moteur fait remonter instantanément leur historique et leurs données.",
+    "step3_title": "Décryptez les stratégies",
+    "step3_text": "Ne vous arrêtez pas au design. Visualisez la fréquence d'envoi, les logiques mises en place, et la structure cachée des séquences de vos concurrents et marques préférées.",
+    "step4_title": "Passez à la production",
+    "step4_text": "Transformez une ou plusieurs inspirations en campagne email concrète. En un clic, l'IA génère une version unique de votre email, fidèle à votre marque et prête à être intégrée dans votre CRM.",
     "signup_title": "Inscrivez-vous",
     "signup_text": "Créez votre compte en 2 minutes. Ajoutez vos concurrents et laissez notre plateforme suivre automatiquement leurs stratégies marketing sur tous les canaux.",
     "add_competitors_title": "Ajoutez des concurrents",
@@ -91,10 +112,14 @@
     "table_features": "Fonctionnalités",
     "table_basic": "Gratuit",
     "table_premium": "Pro",
+    "table_enterprise": "Enterprise",
+    "contact_us": "Nous contacter",
     "free_title": "Gratuit",
     "free_description": "Parfait pour commencer et explorer la plateforme",
     "pro_title": "Pro",
     "pro_description": "Pour les équipes et agences qui ont besoin d'un accès illimité",
+    "enterprise_title": "Enterprise",
+    "enterprise_description": "Solution sur-mesure pour les grandes organisations",
     "features": {
       "workflows_limited": "5 workflows par mois",
       "library_access": "Accès à la bibliothèque d'emails",
@@ -111,7 +136,11 @@
       "team_tools": "Outils de collaboration équipe",
       "priority_support": "Support prioritaire",
       "api_access": "Accès API",
-      "custom_integrations": "Intégrations personnalisées"
+      "custom_integrations": "Intégrations personnalisées",
+      "enterprise_all_pro": "Tout du Pro",
+      "enterprise_multi_country": "Suivi multi-pays",
+      "enterprise_dedicated": "Account manager dédié",
+      "enterprise_white_label": "White-label disponible"
     }
   },
   "testimonials": {

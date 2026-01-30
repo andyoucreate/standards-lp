@@ -21,15 +21,6 @@ const Header = ({}: HeaderProps) => {
   const openWaitingList = useWaitingListModal((state) => state.open);
   const t = useTranslations("navigation");
 
-  function handleLinkClick(e: React.MouseEvent, url: string) {
-    if (url === "/login" || url === "/login?new=true") {
-      e.preventDefault();
-      openWaitingList();
-    } else {
-      handleContactClick(e, url);
-    }
-  }
-
   const navigation = [
     {
       id: "0",
@@ -41,30 +32,22 @@ const Header = ({}: HeaderProps) => {
       title: t("contact"),
       url: "/contact",
     },
-    {
-      id: "2",
-      title: t("login"),
-      url: "/login",
-    },
   ];
 
   return (
     <>
       <div className="fixed top-6 left-8 right-8 z-50 bg-n-8/80 backdrop-blur-md border border-n-6 rounded-2xl lg:left-1/2 lg:right-auto lg:-translate-x-1/2">
         <div className="flex items-center h-[5.25rem] px-6 xl:px-8">
-          <Logo className="pr-3 xl:mr-4" />
+          <Logo variant="header" className="pr-3 xl:mr-4" />
           <nav className="flex ml-auto lg:mx-auto">
             <div className="relative z-2 flex flex-row whitespace-nowrap">
               {navigation.map((item) => (
                 <Link
                   className={`block relative font-code text-xs font-semibold uppercase text-n-1 transition-colors hover:text-color-1 px-6 ${
-                    item.url === pathname ||
-                    (item.url === "/login" && pathname.startsWith("/login"))
-                      ? "z-2 text-n-1"
-                      : "text-n-1/50"
+                    item.url === pathname ? "z-2 text-n-1" : "text-n-1/50"
                   } leading-5 hover:text-n-1 whitespace-nowrap`}
                   href={item.url}
-                  onClick={(e) => handleLinkClick(e, item.url)}
+                  onClick={(e) => handleContactClick(e, item.url)}
                   key={item.id}
                 >
                   {item.title}

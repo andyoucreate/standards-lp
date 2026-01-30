@@ -31,7 +31,9 @@
       "emails": "Indexed Emails",
       "brands": "Tracked Brands",
       "tracking": "Auto Tracking",
-      "industries": "Industries"
+      "industries_analysed": "Industries analysed",
+      "industries": "Industries",
+      "sequences_analysed": "Sequences analysed"
     }
   },
   "features": {
@@ -52,9 +54,17 @@
     }
   },
   "benefits": {
-    "section_title": "Find marketing inspiration instantly with emailoverflow",
+    "section_title": "The blank page is over. Generate your emails on the fly",
     "search_all_title": "Search Everything",
     "search_all_text": "Find the perfect email, ad or landing page instantly with the most advanced marketing search engine.",
+    "emails_title": "Emails",
+    "emails_text": "Access 2M+ emails to monitor your competitors and copy the best ones.",
+    "sequences_title": "Email sequences",
+    "sequences_text": "Visualize email sequences and time logic (D+1, D+3).",
+    "create_emails_title": "Create your emails in 1 click",
+    "create_emails_text": "Turn your inspiration lists into new campaigns perfectly tailored to you.",
+    "analyse_market_title": "Analyze the market",
+    "analyse_market_text": "Generate sector audits on the fly and spot trends by brand, email type, and many other available data points.",
     "auto_tracking_title": "Auto Tracking",
     "auto_tracking_text": "Monitor all your competitors in one place. No need to manually subscribe to hundreds of newsletters.",
     "realtime_title": "Real-time Insights",
@@ -70,8 +80,19 @@
     "collaboration_title": "Team Collaboration",
     "collaboration_text": "Share insights, save favorites, and work together seamlessly with your marketing team in one unified workspace."
   },
+  "collaboration": {
+    "title": "Track your competitors, copy the best."
+  },
   "how_it_works": {
     "label": "How it works",
+    "step1_title": "Define your profile",
+    "step1_text": "Sign up and simply enter your website. The AI analyzes only your public pages to understand your brand guidelines and tone of voice.",
+    "step2_title": "Target your monitoring",
+    "step2_text": "Select direct competitors, sectors or inspiring brands you want to monitor. Our engine instantly surfaces their history and data.",
+    "step3_title": "Decode strategies",
+    "step3_text": "Don't stop at design. Visualize send frequency, logic in place, and the hidden structure of your competitors' and favorite brands' sequences.",
+    "step4_title": "Move to production",
+    "step4_text": "Turn one or more inspirations into a concrete email campaign. In one click, the AI generates a unique version of your email, true to your brand and ready to integrate into your CRM.",
     "signup_title": "Sign Up",
     "signup_text": "Create your account in 2 minutes. Add your competitors and let our platform automatically track their marketing strategies across all channels.",
     "add_competitors_title": "Add Competitors",
@@ -91,10 +112,14 @@
     "table_features": "Features",
     "table_basic": "Free",
     "table_premium": "Pro",
+    "table_enterprise": "Enterprise",
+    "contact_us": "Contact us",
     "free_title": "Free",
     "free_description": "Perfect to get started and explore the platform",
     "pro_title": "Pro",
     "pro_description": "For teams and agencies that need unlimited access",
+    "enterprise_title": "Enterprise",
+    "enterprise_description": "Custom solution for large organizations",
     "features": {
       "workflows_limited": "5 workflows per month",
       "library_access": "Access to email library",
@@ -111,7 +136,11 @@
       "team_tools": "Team collaboration tools",
       "priority_support": "Priority support",
       "api_access": "API access",
-      "custom_integrations": "Custom integrations"
+      "custom_integrations": "Custom integrations",
+      "enterprise_all_pro": "Everything in Pro",
+      "enterprise_multi_country": "Multi-country tracking",
+      "enterprise_dedicated": "Dedicated account manager",
+      "enterprise_white_label": "White-label available"
     }
   },
   "testimonials": {

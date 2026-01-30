@@ -7,7 +7,7 @@ import { useWaitingListModal } from "@/hooks/useWaitingListModal";
 import { useTranslations } from "next-intl";
 import { memo } from "react";
 
-import { apps, content } from "@/mocks/collaboration";
+import { apps } from "@/mocks/collaboration";
 
 type CollaborationProps = object;
 
@@ -16,22 +16,13 @@ const ROTATIONS = [0, 45, 90, 135, 180, 225, 270, 315];
 const Collaboration = memo(function Collaboration({}: CollaborationProps) {
   const openWaitingList = useWaitingListModal((state) => state.open);
   const t = useTranslations("navigation");
+  const tCollaboration = useTranslations("collaboration");
   return (
     <Section>
-      <div className="container lg:flex">
+      <div className="container lg:flex lg:items-center">
         <div className="max-w-[25rem]">
-          <h2 className="h2 mb-4 md:mb-8">Track top brands automatically</h2>
-          <ul className="max-w-[22.5rem] mb-10 md:mb-14">
-            {content.map((item) => (
-              <li className="mb-3 py-3" key={item.id}>
-                <div className="flex items-center">
-                  <Image src="/images/check.svg" width={24} height={24} alt="Check" />
-                  <h6 className="body-2 ml-5">{item.title}</h6>
-                </div>
-              </li>
-            ))}
-          </ul>
-          <Button onClick={openWaitingList} white>
+          <h2 className="h2 mb-4 md:mb-8">{tCollaboration("title")}</h2>
+          <Button onClick={openWaitingList} white className="mt-6">
             {t("join_waitlist")}
           </Button>
         </div>
@@ -40,7 +31,7 @@ const Collaboration = memo(function Collaboration({}: CollaborationProps) {
             <div className="relative left-1/2 flex w-[22.5rem] aspect-square border border-n-6 rounded-full -translate-x-1/2 scale-75 md:scale-100">
               <div className="flex w-60 aspect-square m-auto border border-n-6 rounded-full">
                 <div className="w-[5.75rem] aspect-square m-auto flex items-center justify-center">
-                  <Image src="/images/logo.svg" width={48} height={48} alt="emailoverflow" />
+                  <Image src="/images/logomark.svg" width={48} height={48} alt="emailoverflow" />
                 </div>
               </div>
               <ul>

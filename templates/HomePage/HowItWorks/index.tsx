@@ -56,7 +56,7 @@ const HowItWorks = ({}: HowItWorksProps) => {
                   }`}
                 ></div>
                 <div className="tagline mb-1 text-n-3">0{index + 1}.</div>
-                <h2 className="mb-[0.625rem] text-2xl leading-8">{item.title}</h2>
+                <h2 className="mb-[0.625rem] text-xl leading-7">{item.title}</h2>
               </div>
             ))}
           </div>

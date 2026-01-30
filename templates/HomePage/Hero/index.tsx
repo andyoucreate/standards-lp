@@ -91,7 +91,11 @@ const Hero = ({}: HeroProps) => {
     >
       <div className="container relative" ref={parallaxRef}>
         <div className="relative z-1 max-w-[62rem] mx-auto mb-[3.875rem] text-center md:mb-20 lg:mb-[6.25rem]">
-          <h1 className="h1 mb-6">{t("title")}</h1>
+          <h1 className="h1 mb-6">
+            {t("title_line1")}
+            <br />
+            {t("title_line2")}
+          </h1>
           <p className="body-1 max-w-3xl mx-auto mb-6 text-n-2 lg:mb-8">{t("description")}</p>
           <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
             <Button onClick={openWaitingList} white>

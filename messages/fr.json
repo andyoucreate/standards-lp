@@ -22,7 +22,8 @@
     "dmca": "DMCA"
   },
   "hero": {
-    "title": "Copiez les meilleurs emails en 1 clic",
+    "title_line1": "Copiez les meilleurs emails",
+    "title_line2": "en 1 clic",
     "description": "Accédez à la plus grande bibliothèque de flows CRM et laissez l'IA créer vos emails. Générez des rapports CRM stratégiques, surveillez les emails de vos concurrents.",
     "cta_start": "Commencer",
     "cta_demo": "Planifier une démo",

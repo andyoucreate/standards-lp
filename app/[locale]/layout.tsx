@@ -81,7 +81,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
       description: content.description,
       images: [
         {
-          url: "/fb-og-image.png",
+          url: "/og-image.png",
           width: 1200,
           height: 630,
           alt: "emailoverflow - Email Marketing Inspiration",
@@ -93,7 +93,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
       title: content.title,
       description: content.description,
       creator: "@emailoverflow",
-      images: ["/twitter-card.png"],
+      images: ["/og-image.png"],
     },
     robots: {
       index: true,

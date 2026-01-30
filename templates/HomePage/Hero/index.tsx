@@ -115,7 +115,7 @@ const Hero = ({}: HeroProps) => {
             <div className="text-center shrink-0">
               <div className="text-xs text-n-3 mb-1.5">{t("stats.brands")}</div>
               <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-n-1">
-                <NumberTicker value={10850} delay={0.2} />+
+                <NumberTicker value={80360} delay={0.2} />+
               </div>
             </div>
             <div className="text-center shrink-0">

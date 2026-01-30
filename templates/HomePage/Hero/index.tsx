@@ -163,9 +163,9 @@ const Hero = ({}: HeroProps) => {
                 <div className="sticky top-0 z-0 bg-n-8 rounded-[0.875rem] overflow-hidden">
                   <Image
                     className="w-full h-auto"
-                    src="/images/explorer-ui.png"
+                    src="/images/hero/hero.jpg"
                     width={1440}
-                    height={240}
+                    height={900}
                     quality={100}
                     alt="Explorer Interface"
                   />
